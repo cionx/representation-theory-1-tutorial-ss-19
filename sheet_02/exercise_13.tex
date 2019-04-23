@@ -19,14 +19,18 @@
 \subsection{}
 
 We follow the hint:
-We have for every~$v \in V$ and every simple wedge~$w_1 \wedge w_2 \in \exterior[2]{V}$ that
+Let~$V$ be a {\fourdimensional} vector space with basis~$e_1, e_2, e_3, e_4$.
+We identify the exterior power~$\exterior[4]{V}$ with the ground field~$\Complex$ via the single basis element~$e_1 \wedge e_2 \wedge e_3 \wedge e_4$.
+
+We find that
 \[
   v \wedge w_1 \wedge w_2
   =
   - w_1 \wedge v \wedge w_2
   =
-  - w_1 \wedge w_2 \wedge v \,.
+  w_1 \wedge w_2 \wedge v
 \]
+for every vector~$v \in V$ and every simple wedge~$w_1 \wedge w_2 \in \exterior[2]{V}$.
 The bilinear map
 \[
   \beta
@@ -42,19 +46,20 @@ The bilinear map
   x \wedge y
 \]
 is hence symmetric, beause
-\[
+\begin{align*}
   \beta(v_1 \wedge v_2, w_1 \wedge w_2)
-  =
+  &=
   v_1 \wedge v_2 \wedge w_1 \wedge w_2
-  =
+  \\
+  &=
   v_1 \wedge w_1 \wedge w_2 \wedge v_2
-  =
-  w_1 \wedge w_2 \wedge v_1 \wedge v_1
-\]
+  \\
+  &=
+  w_1 \wedge w_2 \wedge v_1 \wedge v_2
+\end{align*}
 for all simple wedges~$v_1 \wedge v_2, w_1 \wedge w_2 \in \exterior[2]{V}$.
 The bilinear form~$\beta$ is also non-degenerate:
-Let~$e_1$,~$e_2$,~$e_3$,~$e_4$ be a basis of~$V$.
-Then a basis of~$\exterior[2]{V}$ is given by the simple wedges
+A basis of the exterior square~$\exterior[2]{V}$ is given by the simple wedges
 \[
   e_1 \wedge e_2  \,,
   \quad
@@ -68,8 +73,7 @@ Then a basis of~$\exterior[2]{V}$ is given by the simple wedges
   \quad
   e_3 \wedge e_4  \,.
 \]
-We identify the exterior power~$\exterior[4]{V}$ with the ground field~$k$ via the single basis element~$e_1 \wedge e_2 \wedge e_3 \wedge e_4$.
-With respect to this basis of~$\exterior[2]{V}$ the bilinear form~$\beta$ is then given by the following matrix:
+With respect to this basis of~$\exterior[2]{V}$ the bilinear form~$\beta$ is given by the matrix
 \[
   \begin{pmatrix*}[r]
       &     &   &   &     & 1 \\
@@ -78,15 +82,16 @@ With respect to this basis of~$\exterior[2]{V}$ the bilinear form~$\beta$ is the
       &     & 1 &   &     &   \\
       & -1  &   &   &     &   \\
     1 &     &   &   &     &  
-  \end{pmatrix*}
+  \end{pmatrix*}  \,.
 \]
-This matrics is invertible, which means that~$\beta$ is non-degenerate.
+This matrix is invertible, which means that~$\beta$ is non-degenerate.
 
 \begin{warning}
-  The exterior power~$\exterior[4]{V}$ is \emph{not} the same---and not even isomorphic to---the iterated exterior power~$\exterior[2]{\exterior[2]{V}}$.
+  The fourth exterior power~$\exterior[4]{V}$ is neither the same nor isomorphic to the iterated exterior square~$\exterior[2]{\exterior[2]{V}}$.
+  In particular~$\dim \exterior[4]{V} = \binom{\dim V}{4} = \binom{4}{4} = 1$ whereas~$\dim \exterior[2]{\exterior[2]{V}} = \binom{\dim \exterior[2]{V}}{2} = \binom{6}{2} = 15$.
 \end{warning}
 
-We know from the first exercise sheet that
+It follows from Problem~8 of the first exercise sheet that
 \[
   \glie_\beta
   \defined
@@ -98,8 +103,8 @@ We know from the first exercise sheet that
     \text{$\beta(\varphi(x), y) + \beta(x, \varphi(y)) = 0$ for all~$x,y \in \exterior[2]{V}$}
   \biggr\}
 \]
-is a Lie~subalgebra of~$\gllie(V)$ that is isomorphic to~$\solie_6(\Complex)$, because~$\beta$ in non-degenerate and symmetric and~$\exterior[2]{V}$ is~\dash{six}{dimensional}.
-We will therefore construct an isomorphism~$\sllie_4(V) \cong \glie_\beta$, where~$\sllie(V) \cong \sllie_4(\Complex)$ because~$V$ is~\dash{four}{dimensional}.
+is a Lie~subalgebra of~$\gllie(V)$ that is isomorphic to~$\solie_6(\Complex)$, because~$\beta$ in non-degenerate and symmetric and~$\exterior[2]{V}$ is~{\sixdimensional}.
+We will in the following construct an explicit isomorphism~$\sllie_4(V) \cong \glie_\beta$ (where~$\sllie(V) \cong \sllie_4(\Complex)$ because~$V$ is~{\fourdimensional}).
 
 \begin{lemma}
   \label{induced exterior action}
@@ -107,81 +112,130 @@ We will therefore construct an isomorphism~$\sllie_4(V) \cong \glie_\beta$, wher
   \[
     x.(v_1 \wedge \dotsb \wedge v_n)
     =
-    \sum_{i=1}^n v_1 \wedge \dotsb \wedge (x.v_i) \wedge \dotsb v_n
+    \sum_{i=1}^n v_1 \wedge \dotsb \wedge (x.v_i) \wedge \dotsb \wedge v_n
   \]
   for all~$x \in \glie$ and every simple wedge~$v_1 \wedge \dotsb \wedge v_n \in \exterior[n]{V}$.
 \end{lemma}
 
 \begin{proof}
-  It follows from the functoriality of the exterior power that for every fixed element~$x \in \glie$ the proposed action of~$x$ on~$\exterior[n]{V}$ is well-defined.
-  We need to check that this action is compatible with the Lie~bracket of~$\glie$.
+  For readability we will denote for all~$v_1, \dotsc, v_n \in V$ the corresponding simple wedge~$v_1 \wedge \dotsb \wedge v_n$ by~$v_1 \dotsm v_n$.
+  We first need to show that every~$x \in \glie$ the proposed action on~$x$ on~$\exterior[n]{V}$ is well-defined and linear.
+  We do so by using the universal property of the exterior power.
+  For this we consider the map
+  \[
+    \gamma_x
+    \colon
+    V \times \dotsb \times V
+    \to
+    \exterior[n]{V} \,,
+    \quad
+    (v_1, \dotsc, v_n)
+    \mapsto
+    \sum_{i=1}^n v_1 \dotsm (x.v_i) \dotsm v_n  \,.
+  \]
+  This map is multilinear and we need to check that it is alternating.
+  So let~$v_1, \dotsc, v_n \in V$ with~$v_i = v_j$ for some~$i < j$.
+  Then~$v_1 \dotsm (x.v_k) \dotsm v_n = 0$ whenever~$k \neq i,j$ and thus
+  \begin{align*}
+    \gamma_x(v_1, \dotsc, v_n)
+    ={}&
+    \sum_{k=1}^n v_1 \dotsm (x.v_k) \dotsm v_n
+    \\
+    ={}&
+      v_1 \dotsm (x.v_i) \dotsm v_j \dotsm v_n
+    + v_1 \dotsm v_i \dotsm (x.v_j) \dotsm v_n
+    \\
+    ={}&
+      v_1 \dotsm (x.v_i + v_i) \dotsm (x.v_j + v_j) \dotsm v_n
+    \\
+    {}&
+    - v_1 \dotsm (x.v_i) \dotsm (x.v_j) \dotsm v_n
+    \\
+    {}&
+    - v_1 \dotsm v_i \dotsm v_j \dotsm v_n
+    \\
+    ={}&
+    0 \,.
+  \end{align*}
+  It now follows from the universal property of the exterior power~$\exterior[n]{V}$ that~$\gamma_x$ induces a well-defined linear map
+  \[
+    \exterior[n]{V}
+    \to
+    \exterior[n]{V} \,,
+    \quad
+    v_1 \dotsm v_n
+    \mapsto
+    \sum_{i=1}^n v_1 \dotsb (x.v_i) \dotsb v_n  \,.
+  \]
+
+  We need to check that this action of~$\glie$ on~$\exterior[n]{V}$ is again compatible with the Lie~bracket of~$\glie$.
   We see that
   \begin{align*}
     {}&
-    x.y.(v_1 \wedge \dotsb \wedge v_n)
+    x.y.(v_1 \dotsm v_n)
     \\
     ={}&
-    x. \sum_{i=1}^n v_1 \wedge \dotsb \wedge (y.v_i) \wedge \dotsb v_n
+    x. \sum_{i=1}^n v_1 \dotsm (y.v_i) \dotsm v_n
     \\
     ={}&
-    \sum_{i < j}  v_1 \wedge \dotsb \wedge (x.v_i) \dotsb \wedge (y.v_j) \wedge \dotsb v_n
+    \sum_{i < j}  v_1 \dotsm (x.v_i) \dotsm (y.v_j) \dotsm v_n
     \\
     {}&
-    + \sum_{i=1}^n  v_1 \wedge \dotsb \wedge (y.x.v_i) \dotsb \wedge v_j \wedge \dotsb v_n
+    + \sum_{i=1}^n  v_1 \dotsm (x.y.v_i) \dotsm v_n
     \\
     {}&
-    + \sum_{i > j}  v_1 \wedge \dotsb \wedge (y.v_j) \dotsb \wedge (x.v_i) \wedge \dotsb v_n
+    + \sum_{i < j}  v_1 \dotsm (y.v_i) \dotsm (x.v_j) \dotsm v_n
   \end{align*}
   and hence
   \begin{align*}
     {}&
-    x.y.(v_1 \wedge \dotsb \wedge v_n) - y.x.(v_1 \wedge \dotsb \wedge v_n)
+    x.y.(v_1 \dotsm v_n) - y.x.(v_1 \dotsm v_n)
     \\
     ={}&
-    \sum_{i=1}^n  (v_1 \wedge \dotsb \wedge (y.x.v_i) \dotsb \wedge v_j \wedge \dotsb v_n)
+    \sum_{i=1}^n  v_1 \dotsm (x.y.v_i) \dotsm v_n
     -
-    \sum_{i=1}^n  v_1 \wedge \dotsb \wedge (x.y.v_i) \dotsb \wedge v_j \wedge \dotsb v_n
+    \sum_{i=1}^n  v_1 \dotsm (y.x.v_i) \dotsm v_n
     \\
     ={}&
-    \sum_{i=1}^n  v_1 \wedge \dotsb \wedge (y.x.v_i - x.y.v_i) \dotsb \wedge v_j \wedge \dotsb v_n
+    \sum_{i=1}^n  v_1 \dotsm (x.y.v_i - y.x.v_i) \dotsm v_n
     \\
     ={}&
-    \sum_{i=1}^n  v_1  \wedge \dotsb \wedge ([x,y].v_i) \dotsb \wedge v_j \wedge \dotsb v_n
+    \sum_{i=1}^n  v_1  \dotsm ([x,y].v_i) \dotsm v_n
   \end{align*}
-  for all~$x, y \in \glie$ and every simple wedge~$v_1 \wedge \dotsb \wedge v_n \in \exterior[n]{V}$.
+  for all~$x, y \in \glie$ and every simple wedge~$v_1 \dotsm v_n \in \exterior[n]{V}$.
 \end{proof}
 
-It follows from \cref{induced exterior action} that the natural action of~$\sllie(V)$ on~$V$ induces on~$\exterior[2]{V}$ the structure of a~{\representation{$\sllie(V)$}} via
+It follows from \cref{induced exterior action} that the natural action of~$\sllie(V)$ on~$V$ induces on~$\exterior[2]{V}$ the structure of an~{\representation{$\sllie(V)$}} via
 \[
   X.(v_1 \wedge v_2)
   =
-  (X.v_1) \wedge v_2 + v_1 \wedge (x.V_2)
+  (X.v_1) \wedge v_2 + v_1 \wedge (X.v_2)
 \]
-for every~$X \in \sllie(V)$ and every simple wedge~$v_1 \wedge v_2 \in \exterior[2]{V}$.
-This action of~$\sllie(V)$ on~$\exterior[2]{V}$ corresponds to a homomorphis of Lie~algebras~$\rho \colon \sllie(V) \to \exterior[2]{V}$ given by~$\rho(X)(x) = X.x$ for all~$X \in \sllie(V)$ and~$x \in \exterior[2]{V}$.
+for all~$X \in \sllie(V)$ and every simple wedge~$v_1 \wedge v_2 \in \exterior[2]{V}$.
+This action of~$\sllie(V)$ on~$\exterior[2]{V}$ corresponds to a homomorphism of Lie~algebras~$\rho \colon \sllie(V) \to \gllie(\exterior[2]{V})$ that is given by~$\rho(X)(x) = X.x$ for all~$X \in \sllie(V)$ and~$x \in \exterior[2]{V}$.
 We show in the following that~$\rho$ restricts to an isomorphism~$\sllie(V) \to \glie_\beta$.
 
 We first observe that the image of~$\rho$ is contained in~$\glie_\beta$:
 We need to show that
 \[
-  \beta(\rho(X)(x), y) + \beta(X, \rho(X)(y)
+  \beta(\rho(X)(x), y) + \beta(x, \rho(X)(y)
   =
   0
 \]
-for all~$x, y \in \exterior[2]{V}$.
-It sufficies to consider the cases that~$x$ and~$y$ are simple wedges~$x = v_1 \wedge v_2$ and~$y = v_3 \wedge v_4$.
-Then
+for all~$X \in \sllie(V)$ and~$x, y \in \exterior[2]{V}$.
+It sufficies to consider the case that both~$x$ and~$y$ are simple wedges~$x = v_1 \wedge v_2$ and~$y = v_3 \wedge v_4$.
+Then the term
 \begin{align*}
   {}&
   \gamma(v_1, v_2, v_3, v_4)
   \\
-  ={}&
+  \defined{}&
     \beta(\rho(X)(v_1 \wedge v_2), v_3 \wedge v_4)
   + \beta(v_1 \wedge v_2, \rho(X)(v_3 \wedge v_4))
   \\
   ={}&
-    \beta((X.v_1) \wedge v_2 + v_1 \wedge (X.v_2), v_3 \wedge v_4)
-  + \beta(v_1 \wedge v_2, (X.v_3) \wedge v_n + v_3 \wedge (X.v_4))
+    \rho(X)(v_1 \wedge v_2) \wedge v_3 \wedge v_4
+  + v_1 \wedge v_2 \wedge \rho(X)(v_3 \wedge v_4)
   \\
   ={}&
     (X.v_1) \wedge v_2 \wedge v_3 \wedge v_4
@@ -192,13 +246,13 @@ Then
   + v_1 \wedge v_2 \wedge v_3 \wedge (X.v_4)
 \end{align*}
 is multilinear and alternating in~$v_1$,~$v_2$,~$v_3$,~$v_4$.
-To show that~$\gamma(v_1, v_2, v_3, v_4) = 0$ for all~$v_1, v_2, v_3, v_4 \in V$ it therefore sufficies to show that~$\gamma(e_1, e_2, e_3, e_4) = 0$ for a basis~$e_1, e_2, e_3, e_n$ of~$V$.
-Let~$A \in \sllie_4(\Complex)$ be the matrix that represents~$X \in \sllie(V)$ with respect to this basis, which means that~$X.e_j = \sum_{i=1}^n A_{ij} e_i$ for every~$j = 1, \dotsc, n$.
+To show that~$\gamma(v_1, v_2, v_3, v_4) = 0$ for all~$v_1, v_2, v_3, v_4 \in V$ it therefore sufficies to show that~$\gamma(e_1, e_2, e_3, e_4) = 0$ for the given basis~$e_1$,~$e_2$,~$e_3$,~$e_4$ of~$V$.
+Let~$A \in \sllie_4(\Complex)$ be the matrix that represents~$X \in \sllie(V)$ with respect to this basis, which means that~$X.e_j = \sum_{i=1}^4 A_{ij} e_i$ for every~$j = 1, 2, 3, 4$.
 Then
 \[
   (X.e_1) \wedge e_2 \wedge e_3 \wedge e_4
   =
-  \sum_{i=1}^n A_{i1} e_i \wedge e_2 \wedge e_3 \wedge e_4
+  \sum_{i=1}^4 A_{i1} e_i \wedge e_2 \wedge e_3 \wedge e_4
   =
   A_{11} e_1 \wedge e_2 \wedge e_3 \wedge e_4
 \]
@@ -208,11 +262,11 @@ and similarly
   &=
   A_{22} e_1 \wedge e_2 \wedge e_3 \wedge e_4 \,,
   \\
-  v_1 \wedge v_2 \wedge (X.v_3) \wedge v_4
+  e_1 \wedge e_2 \wedge (X.e_3) \wedge e_4
   &=
   A_{33} e_1 \wedge e_2 \wedge e_3 \wedge e_4 \,,
   \\
-  v_1 \wedge v_2 \wedge v_3 \wedge (X.v_4)
+  e_1 \wedge e_2 \wedge e_3 \wedge (X.e_4)
   &=
   A_{44} e_1 \wedge e_2 \wedge e_3 \wedge e_4 \,.
 \end{align*}
@@ -229,11 +283,11 @@ Hence altogether
 \end{align*}
 We have shown that the image of~$\rho$ lies in~$\glie_\beta$.
 
+It remains to show that the homomorphism~$\rho$ is both surjective onto~$\glie_\beta$ and injective.
 We know that~$\dim \sllie(V) = \dim \sllie_4(\Complex) = 4^2 - 1 = 15$ and~$\dim \glie_\beta = \dim \solie_6(\Complex) = 15$.
-It therefore now sufficies to show that~$\rho$ is injective.
-Since~$\sllie(V)$ is simple if sufficies to show that~$\rho$ is nonzero.
-For this we consider the endomorphism~$X \in \sllie(V)$ with~$X(e_1) = e_1$,~$X(e_2) = -e_2$ and~$X(e_3) = X_(e_4) = 0$ for some basis~$e_1$,~$e_2$,~$e_3$,~$e_4$ of~$V$.
-Then
+It therefore sufficies to show that~$\rho$ is injective.
+It moreover sufficies to show that~$\rho$ is nonzero because~$\sllie(V)$ is simple.
+If we consider the endomorphism~$X \in \sllie(V)$ with~$X(e_1) = e_1$,~$X(e_2) = -e_2$ and~$X(e_3) = X(e_4) = 0$ then
 \[
   \rho(X)(e_1 \wedge e_3)
   =
@@ -245,14 +299,7 @@ Then
   \neq
   0
 \]
-and hence~$\rho(X) \neq 0$.
-This shows that~$\rho$ is nonzero.
-
-
-
-
-
-
+whence~$\rho(X) \neq 0$.
 
 
 

@@ -7,7 +7,7 @@
 \subsection{}
 
 To construct a Lie algebra homomorphism~$\varphi \colon \glie \to \sllie_{n+1}(\Complex)$ we only need to specify the images~$E_i$,~$H_i$,~$F_i$ of the generators~$e_i$,~$h_i$,~$f_i$ and then check that these proposed images satisfy the given relations~(22)--(27).
-(This is what it means for~$\glie$ to be given by the generators~$\{ e_i, h_i, f_i \}_{i=1}^n$ and relations~(22)--(27).)
+(This is what it means for the Lie~algebra~$\glie$ to be given by the generators~$\{ e_i, h_i, f_i \}_{i=1}^n$ and relations~(22)--(27).)
 
 In the case~$n = 1$ we know that the Lie~algebra~$\sllie_2(\Complex)$ has the standard basis~$e$,~$f$,~$h$ constisting of the matrices
 \[
@@ -18,22 +18,22 @@ In the case~$n = 1$ we know that the Lie~algebra~$\sllie_2(\Complex)$ has the st
     0 & 0
   \end{pmatrix} \,,
   \quad
-  h
-  =
-  \begin{pmatrix*}[r]
-    1 &  0  \\
-    0 & -1
-  \end{pmatrix*}  \,,
-  \quad
   f
   =
   \begin{pmatrix}
     0 & 0 \\
     1 & 0
-  \end{pmatrix} \,.
+  \end{pmatrix} \,,
+  \quad
+  h
+  =
+  \begin{pmatrix*}[r]
+    1 &  0  \\
+    0 & -1
+  \end{pmatrix*}  \,.
 \]
-These three basis vectors satisfy the relations~$[h,e] = 2e$,~$[h,f] = -2f$ and~$[e,f] = h$.
-Motivated by this example we will choose for arbitrary~$n \geq 1$ the proposed images~$E_i, F_i, H_i \in \sllie_{n+1}(\Complex)$ as
+These three matrices satisfy the relations~$[e,f] = h$,~$[h,e] = 2e$ and~$[h,f] = -2f$, which corresponds to the relations~(23),~(24),~(25).
+Motivated by this example we choose for any~$n \geq 1$ the images~$E_i, F_i, H_i \in \sllie_{n+1}(\Complex)$ as
 \[
   E_i
   \defined
@@ -56,7 +56,7 @@ We need to check that these elements satisfy the relations~(22)--(27):
     \begin{align*}
       [E_i, F_j]
       &=
-      E_i F_j - F_j E_i
+      [E_{i,i+1}, E_{j+1,j}]
       \\
       &=
       E_{i,i+1} E_{j+1,j} - E_{j+1,j} E_{i,i+1}
@@ -65,13 +65,19 @@ We need to check that these elements satisfy the relations~(22)--(27):
       \delta_{i+1,j+1} E_{ij} - \delta_{ij} E_{j+1,i+1}
       \\
       &=
+      \delta_{ij} E_{ij} - \delta_{ij} E_{j+1,i+1}
+      \\
+      &=
+      \delta_{ij} E_{ii} - \delta_{ij} E_{i+1,i+1}
+      \\
+      &=
       \delta_{ij} (E_{ii} - E_{i+1,i+1})
       \\
       &=
-      \delta_{ij} H_i
+      \delta_{ij} H_i \,.
     \end{align*}
-    where we used that~$\delta_{i+1,j+1} = \delta_{ij}$ and~$\delta_{ij} E_{ij} = \delta_{ij} E_{ii}$.
   \item
+    \label{H and E}
     We find
     \begin{align*}
       [H_i, E_j]
@@ -88,6 +94,9 @@ We need to check that these elements satisfy the relations~(22)--(27):
       \delta_{ij} E_{i,j+1} - \delta_{i+1,j} E_{i+1,j+1} - \delta_{i,j+1} E_{ji} + \delta_{i+1,j+1} E_{j,i+1}
       \\
       &=
+      \delta_{ij} E_{i,j+1} - \delta_{i+1,j} E_{i+1,j+1} - \delta_{i,j+1} E_{ji} + \delta_{ij} E_{j,i+1}
+      \\
+      &=
       \delta_{ij} (E_{i,j+1} + E_{j,i+1}) - \delta_{i+1,j} E_{i+1,j+1} - \delta_{i,j+1} E_{ji}
       \\
       &=
@@ -100,8 +109,9 @@ We need to check that these elements satisfy the relations~(22)--(27):
       a_{ji} E_j  \,.
     \end{align*}
   \item
+    \label{H and F}
     This relation can be checked in the same way as~(24).
-    But we can also observe that~$F_j = E_j^T$ and~$H_i = H_i^T$ whence
+    But we can also observe that~$F_j = E_j^T$ and~$H_i = H_i^T$ and hence
     \[
       [H_i, F_j]
       =
@@ -109,9 +119,9 @@ We need to check that these elements satisfy the relations~(22)--(27):
       =
       [E_j, H_i]^T
       =
-      a_{ij} E_j^T
+      a_{ji} E_j^T
       =
-      -a_{ij} F_j \,.
+      -a_{ji} F_j \,.
     \]
   \item
     We find
@@ -129,16 +139,16 @@ We need to check that these elements satisfy the relations~(22)--(27):
       &=
       \delta_{i+1,j} E_{i,j+1} - \delta_{i,j+1} E_{j,i+1} \,.
     \end{align*}
-    We find for~$\abs{i-j} \geq 2$ that~$\delta_{i+1,j} = \delta_{i,j+1} = 0$ and hence
+    If~$\abs{i-j} \geq 2$ then~$\delta_{i+1,j} = \delta_{i,j+1} = 0$ and~$a_{ji} = 0$ and hence
     \[
       \ad(E_i)^{-a_{ji}+1}(E_j)
       =
       \ad(E_i)(E_j)
       =
-      0 \,.
+      0
     \]
-    as desired.
-    If~$i = j-1$ then~$\ad(E_i)(E_j) = E_{i,j+1} = E_{i,i+2}$ and~$a_{ji} = -1$ and thus
+    as needed.
+    If~$i = j-1$ then~$[E_i, E_j] = \ad(E_i)(E_j) = E_{i,j+1} = E_{i,i+2}$ and~$a_{ji} = -1$ and thus
     \begin{align*}
       \ad(E_i)^{-a_{ji}+1}(E_j)
       &=
@@ -146,9 +156,6 @@ We need to check that these elements satisfy the relations~(22)--(27):
       \\
       &=
       [E_i, [E_i, E_j]]
-      \\
-      &=
-      [E_i, E_{i,i+2}]
       \\
       &=
       [E_{i,i+1}, E_{i,i+2}]
@@ -160,11 +167,11 @@ We need to check that these elements satisfy the relations~(22)--(27):
       \delta_{i,i+1} E_{i,i+2} - \delta_{i,i+2} E_{i,i+1}
       \\
       &=
-      0
+      0 \,.
     \end{align*}
     The case~$i = j+1$ works the same.
   \item
-    This can be done by similar calculations as~(26) but can also be directly derived from~(26) by again using the matrix transpose.
+    This can be done by similar calculations as in~(26) but can also be directly derived from~(26) by again using the matrix transpose.
 \end{enumerate}
 
 
@@ -172,12 +179,12 @@ We need to check that these elements satisfy the relations~(22)--(27):
   \leavevmode
   \begin{enumerate}
     \item
-      We used for~(25) that~that~$[A,B]^T = (AB - BA)^T = B^T A^T - A^T B^T = [B^T, A^T]$.
+      We used in~\ref*{H and F} that~that~$[A,B]^T = (AB - BA)^T = B^T A^T - A^T B^T = [B^T, A^T]$.
     \item
-      For~(24) and~(25) it is useful to understand how a commutator~$[D,A]$ looks like if~$D$ is a diagonal matrix with diagonal entries~$\lambda_1, \dotsc, \lambda_n \in k$:
+      For~\ref*{H and E} and~\ref*{H and F} it is useful to understand how a commutator~$[D,A]$ looks like if~$D$ is a diagonal matrix with diagonal entries~$\lambda_1, \dotsc, \lambda_n \in \Complex$:
       
       The matrix~$DA$ results from~$A$ by multiplying for every~$i = 1, \dotsc, n$ the~\dash{$i$}{th} row of~$A$ by the corresponding diagonal entry~$\lambda_i$.
-      Similarly the matrix~$AD$ results from~$A$ by multiplying for every~$j = 1, \dotsc, n$ the~{$j$}{th} column of~$A$ by the corresponding diagonal entry~$\lambda_j$.
+      Similarly the matrix~$AD$ results from~$A$ by multiplying for every~$j = 1, \dotsc, n$ the~\dash{$j$}{th} column of~$A$ by the corresponding diagonal entry~$\lambda_j$.
       This means in formulae that
       \[
         (DA)_{ij}
@@ -210,28 +217,32 @@ We need to check that these elements satisfy the relations~(22)--(27):
         =
         ((H_i)_{jj} - (H_i)_{j+1,j+1}) E_{j,j+1}
       \shortintertext{where}
-        (H_i)_{jj} - (H_i)_{j+1,j+1}
-        =
-        \begin{cases}
-          \phantom{-}0  & \text{if~$j+1 < i$} \,, \\
-                    -1  & \text{if~$j+1 = i$} \,, \\
-          \phantom{-}2  & \text{if~$j = i$} \,,   \\
-                    -1  & \text{if~$j = i+1$} \,, \\
-          \phantom{-}0  & \text{if~$j > i+1$} \,.
-        \end{cases}
+        \begin{aligned}
+          (H_i)_{jj} - (H_i)_{j+1,j+1}
+          &=
+          \begin{cases}
+            \phantom{-}0  & \text{if~$j+1 < i$} \,, \\
+                      -1  & \text{if~$j+1 = i$} \,, \\
+            \phantom{-}2  & \text{if~$j = i$} \,,   \\
+                      -1  & \text{if~$j = i+1$} \,, \\
+            \phantom{-}0  & \text{if~$j > i+1$} \,.
+          \end{cases}
+          \\
+          &= a_{ji}
+        \end{aligned}
       \end{gather*}
       Hence~$[H_i, E_j] = a_{j,i} E_j$ as desired.
   \end{enumerate}
 \end{remark}
 
-We have shown that~$E_i, F_i, H_i$ with~$i = 1, \dotsc, n$ satisfy the given relations, and all these matrices are contained in~$\sllie_{n+1}(\Complex)$.
+We have shown that the matrices~$E_i, F_i, H_i$ satisfy the given relations.
 There hence exists a unique homomorphism of Lie~algebras~$\varphi \colon \glie \to \sllie_{n+1}(\Complex)$ with~$\varphi(e_i) = E_i$,~$\varphi(f_i) = F_i$ and~$\varphi(h_i) = H_i$.
 It remains to show that~$\varphi$ is surjective.
 
 The image of~$\varphi$ is a Lie~subalgebra of~$\sllie_{n+1}(\Complex)$.
-It therefore suffieces to show that~$\sllie_{n+1}(\Complex)$ is generated by the elements~$\{E_i, F_i, H_i\}_{i=1}^n$ as a Lie~algebra.
+It therefore sufficies to show that~$\sllie_{n+1}(\Complex)$ is generated by the elements~$\{E_i, F_i, H_i\}_{i=1}^n$ as a Lie~algebra.
 Let~$\slie$ be the Lie~subalgebra of~$\sllie_{n+1}(\Complex)$ generated by these elements.
-We know that~$\sllie_{n+1}(\Complex)$ has a basis the diagonal matrices~$H_1, \dotsc, H_n$ together with the off-diagonal matrices~$E_{ij}$ where~$1 \leq i \neq j \leq n+1$.
+We know that~$\sllie_{n+1}(\Complex)$ has as a basis the diagonal matrices~$H_1, \dotsc, H_n$ together with the off-diagonal matrices~$E_{ij}$ where~$1 \leq i \neq j \leq n+1$.
 It sufficies to show that these matrices are contained in~$\slie$.
 This holds for~$H_1, \dotsc, H_n$ by construction of~$\slie$.
 
@@ -252,8 +263,8 @@ is again contained~$\slie$.
 This shows that all off-diagonal matrices~$E_{ij}$ with~$j > i$ are contained in~$\slie$.
 
 For the off-diagonal matrices~$E_{ij}$ with~$i < j$ we can argue in the same way by using the matrices~$F_i$ instead of~$E_i$.
-But we could also observe that the Lie~algebra generating set~$\{E_i, F_i, H_i\}_{i=1}^n$ of~$\slie$ is closed under matrix transpose whence~$\slie$ is closed under matrix transpose (because matrix transpose is a Lie algebra anti-isomorphism).
-It thus follows for all~$i < j$ from~$E_{ji} \in \slie$ that also~$E_{ij} \in \slie$.
+But we could also observe that the Lie~algebra generating set~$\{E_i, F_i, H_i\}_{i=1}^n$ of~$\slie$ is closed under matrix transposition whence~$\slie$ is closed under matrix transposition (because matrix transposition is a Lie algebra anti-automorphism).
+It thus follows for all~$i < j$ from~$E_{ji} \in \slie$ that also~$E_{ij} = E_{ji}^T \in \slie$.
 
 
 
