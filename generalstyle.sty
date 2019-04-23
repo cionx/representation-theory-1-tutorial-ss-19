@@ -16,6 +16,11 @@
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
 
+% theorems and such
+\newcounter{everything}
+\theoremstyle{definition}
+\newtheorem{remark}[everything]{Remark}
+
 
 
 
@@ -23,6 +28,30 @@
 %%%%% Text Macros
 
 \newcommand{\dash}[2]{#1\nobreakdash-#2}
+
+
+
+%%%%% Math Macros
+
+% fields and such
+\newcommand{\Complex}{\mathbb{C}}
+
+% Lie algebras
+\newcommand{\glie}{\mathfrak{g}}
+\newcommand{\gllie}{\mathfrak{gl}}
+\newcommand{\slie}{\mathfrak{s}}
+\newcommand{\sllie}{\mathfrak{sl}}
+
+% binary things
+\newcommand{\defined}{\coloneqq}
+
+% delimiters
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+
+% functions
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\id}{id}
 
 
 

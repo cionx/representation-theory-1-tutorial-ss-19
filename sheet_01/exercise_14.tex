@@ -1,1 +1,271 @@
-\addtocounter{section}{1}
+\section{}
+
+
+
+
+
+\subsection{}
+
+To construct a Lie algebra homomorphism~$\varphi \colon \glie \to \sllie_{n+1}(\Complex)$ we only need to specify the images~$E_i$,~$H_i$,~$F_i$ of the generators~$e_i$,~$h_i$,~$f_i$ and then check that these proposed images satisfy the given relations~(22)--(27).
+(This is what it means for~$\glie$ to be given by the generators~$\{ e_i, h_i, f_i \}_{i=1}^n$ and relations~(22)--(27).)
+
+In the case~$n = 1$ we know that the Lie~algebra~$\sllie_2(\Complex)$ has the standard basis~$e$,~$f$,~$h$ constisting of the matrices
+\[
+  e
+  =
+  \begin{pmatrix}
+    0 & 1 \\
+    0 & 0
+  \end{pmatrix} \,,
+  \quad
+  h
+  =
+  \begin{pmatrix*}[r]
+    1 &  0  \\
+    0 & -1
+  \end{pmatrix*}  \,,
+  \quad
+  f
+  =
+  \begin{pmatrix}
+    0 & 0 \\
+    1 & 0
+  \end{pmatrix} \,.
+\]
+These three basis vectors satisfy the relations~$[h,e] = 2e$,~$[h,f] = -2f$ and~$[e,f] = h$.
+Motivated by this example we will choose for arbitrary~$n \geq 1$ the proposed images~$E_i, F_i, H_i \in \sllie_{n+1}(\Complex)$ as
+\[
+  E_i
+  \defined
+  E_{i,i+1} \,,
+  \quad
+  F_i
+  \defined
+  E_{i+1,i} \,,
+  \quad
+  H_i
+  \defined
+  E_{ii} - E_{i+1,i+1}  \,.
+\]
+We need to check that these elements satisfy the relations~(22)--(27):
+\begin{enumerate}[label=(\arabic*),start=22]
+  \item
+    We find~$[H_i, H_j] = 0$ because both~$H_i$ and~$H_j$ are diagonal matrices and hence commute with each other.
+  \item
+    We find
+    \begin{align*}
+      [E_i, F_j]
+      &=
+      E_i F_j - F_j E_i
+      \\
+      &=
+      E_{i,i+1} E_{j+1,j} - E_{j+1,j} E_{i,i+1}
+      \\
+      &=
+      \delta_{i+1,j+1} E_{ij} - \delta_{ij} E_{j+1,i+1}
+      \\
+      &=
+      \delta_{ij} (E_{ii} - E_{i+1,i+1})
+      \\
+      &=
+      \delta_{ij} H_i
+    \end{align*}
+    where we used that~$\delta_{i+1,j+1} = \delta_{ij}$ and~$\delta_{ij} E_{ij} = \delta_{ij} E_{ii}$.
+  \item
+    We find
+    \begin{align*}
+      [H_i, E_j]
+      &=
+      [E_{ii} - E_{i+1,i+1}, E_{j,j+1}]
+      \\
+      &=
+      (E_{ii} - E_{i+1,i+1}) E_{j,j+1} - E_{j,j+1} (E_{ii} - E_{i+1,i+1})
+      \\
+      &=
+      E_{ii} E_{j,j+1} - E_{i+1,i+1} E_{j,j+1} - E_{j,j+1} E_{ii} + E_{j,j+1} E_{i+1, i+1}
+      \\
+      &=
+      \delta_{ij} E_{i,j+1} - \delta_{i+1,j} E_{i+1,j+1} - \delta_{i,j+1} E_{ji} + \delta_{i+1,j+1} E_{j,i+1}
+      \\
+      &=
+      \delta_{ij} (E_{i,j+1} + E_{j,i+1}) - \delta_{i+1,j} E_{i+1,j+1} - \delta_{i,j+1} E_{ji}
+      \\
+      &=
+      2 \delta_{ij} E_{j,j+1} - \delta_{i+1,j} E_{j,j+1} - \delta_{i,j+1} E_{j,j+1}
+      \\
+      &=
+      (2 \delta_{ij} - \delta_{i+1,j} - \delta_{i,j+1}) E_{j,j+1}
+      \\
+      &=
+      a_{ji} E_j  \,.
+    \end{align*}
+  \item
+    This relation can be checked in the same way as~(24).
+    But we can also observe that~$F_j = E_j^T$ and~$H_i = H_i^T$ whence
+    \[
+      [H_i, F_j]
+      =
+      [H_i^T, E_j^T]
+      =
+      [E_j, H_i]^T
+      =
+      a_{ij} E_j^T
+      =
+      -a_{ij} F_j \,.
+    \]
+  \item
+    We find
+    \begin{align*}
+      \ad(E_i)(E_j)
+      &=
+      [E_i, E_j]
+      \\
+      &=
+      [E_{i,i+1}, E_{j,j+1}]
+      \\
+      &=
+      E_{i,i+1} E_{j,j+1} - E_{j,j+1} E_{i,i+1}
+      \\
+      &=
+      \delta_{i+1,j} E_{i,j+1} - \delta_{i,j+1} E_{j,i+1} \,.
+    \end{align*}
+    We find for~$\abs{i-j} \geq 2$ that~$\delta_{i+1,j} = \delta_{i,j+1} = 0$ and hence
+    \[
+      \ad(E_i)^{-a_{ji}+1}(E_j)
+      =
+      \ad(E_i)(E_j)
+      =
+      0 \,.
+    \]
+    as desired.
+    If~$i = j-1$ then~$\ad(E_i)(E_j) = E_{i,j+1} = E_{i,i+2}$ and~$a_{ji} = -1$ and thus
+    \begin{align*}
+      \ad(E_i)^{-a_{ji}+1}(E_j)
+      &=
+      \ad(E_i)^2(E_j)
+      \\
+      &=
+      [E_i, [E_i, E_j]]
+      \\
+      &=
+      [E_i, E_{i,i+2}]
+      \\
+      &=
+      [E_{i,i+1}, E_{i,i+2}]
+      \\
+      &=
+      E_{i, i+1} E_{i, i+2} - E_{i,i+2} E_{i,i+1}
+      \\
+      &=
+      \delta_{i,i+1} E_{i,i+2} - \delta_{i,i+2} E_{i,i+1}
+      \\
+      &=
+      0
+    \end{align*}
+    The case~$i = j+1$ works the same.
+  \item
+    This can be done by similar calculations as~(26) but can also be directly derived from~(26) by again using the matrix transpose.
+\end{enumerate}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We used for~(25) that~that~$[A,B]^T = (AB - BA)^T = B^T A^T - A^T B^T = [B^T, A^T]$.
+    \item
+      For~(24) and~(25) it is useful to understand how a commutator~$[D,A]$ looks like if~$D$ is a diagonal matrix with diagonal entries~$\lambda_1, \dotsc, \lambda_n \in k$:
+      
+      The matrix~$DA$ results from~$A$ by multiplying for every~$i = 1, \dotsc, n$ the~\dash{$i$}{th} row of~$A$ by the corresponding diagonal entry~$\lambda_i$.
+      Similarly the matrix~$AD$ results from~$A$ by multiplying for every~$j = 1, \dotsc, n$ the~{$j$}{th} column of~$A$ by the corresponding diagonal entry~$\lambda_j$.
+      This means in formulae that
+      \[
+        (DA)_{ij}
+        =
+        \lambda_i A_{ij}
+        \quad\text{and}\quad
+        (AD)_{ij}
+        =
+        \lambda_j A_{ij}
+      \]
+      for all~$i,j = 1, \dotsc, n$, and thus
+      \[
+        [D,A]_{ij}
+        =
+        (DA - AD)_{ij}
+        =
+        (DA)_{ij} - (AD)_{ij}
+        =
+        \lambda_i A_{ij} - \lambda_j A_{ij}
+        =
+        (\lambda_i - \lambda_j) A_{ij}
+      \]
+      for all~$i, j = 1, \dotsc, n$.
+      
+      It follows that
+      \begin{gather*}
+        [H_i, E_j]
+        =
+        [H_i, E_{j,j+1}]
+        =
+        ((H_i)_{jj} - (H_i)_{j+1,j+1}) E_{j,j+1}
+      \shortintertext{where}
+        (H_i)_{jj} - (H_i)_{j+1,j+1}
+        =
+        \begin{cases}
+          \phantom{-}0  & \text{if~$j+1 < i$} \,, \\
+                    -1  & \text{if~$j+1 = i$} \,, \\
+          \phantom{-}2  & \text{if~$j = i$} \,,   \\
+                    -1  & \text{if~$j = i+1$} \,, \\
+          \phantom{-}0  & \text{if~$j > i+1$} \,.
+        \end{cases}
+      \end{gather*}
+      Hence~$[H_i, E_j] = a_{j,i} E_j$ as desired.
+  \end{enumerate}
+\end{remark}
+
+We have shown that~$E_i, F_i, H_i$ with~$i = 1, \dotsc, n$ satisfy the given relations, and all these matrices are contained in~$\sllie_{n+1}(\Complex)$.
+There hence exists a unique homomorphism of Lie~algebras~$\varphi \colon \glie \to \sllie_{n+1}(\Complex)$ with~$\varphi(e_i) = E_i$,~$\varphi(f_i) = F_i$ and~$\varphi(h_i) = H_i$.
+It remains to show that~$\varphi$ is surjective.
+
+The image of~$\varphi$ is a Lie~subalgebra of~$\sllie_{n+1}(\Complex)$.
+It therefore suffieces to show that~$\sllie_{n+1}(\Complex)$ is generated by the elements~$\{E_i, F_i, H_i\}_{i=1}^n$ as a Lie~algebra.
+Let~$\slie$ be the Lie~subalgebra of~$\sllie_{n+1}(\Complex)$ generated by these elements.
+We know that~$\sllie_{n+1}(\Complex)$ has a basis the diagonal matrices~$H_1, \dotsc, H_n$ together with the off-diagonal matrices~$E_{ij}$ where~$1 \leq i \neq j \leq n+1$.
+It sufficies to show that these matrices are contained in~$\slie$.
+This holds for~$H_1, \dotsc, H_n$ by construction of~$\slie$.
+
+Let us consider the off-diagonal matrices~$E_{ij}$ with~$j > i$.
+We fix the index~$i$ and show that~$E_{i,i+1}, E_{i,i+2}, \dotsc, E_{i,n+1} \in \slie$.
+This holds for~$E_{i,i+1} = E_i$ by construction of~$\slie$.
+If~$E_{ij} \in \slie$ for some~$i+1 \leq j < n+1$ then we find inductively that the matrix
+\[
+  [E_{ij}, E_j]
+  =
+  [E_{ij}, E_{j,j+1}]
+  =
+  E_{ij} E_{j,j+1} - E_{j,j+1} E_{ij}
+  =
+  E_{i,j+1}
+\]
+is again contained~$\slie$.
+This shows that all off-diagonal matrices~$E_{ij}$ with~$j > i$ are contained in~$\slie$.
+
+For the off-diagonal matrices~$E_{ij}$ with~$i < j$ we can argue in the same way by using the matrices~$F_i$ instead of~$E_i$.
+But we could also observe that the Lie~algebra generating set~$\{E_i, F_i, H_i\}_{i=1}^n$ of~$\slie$ is closed under matrix transpose whence~$\slie$ is closed under matrix transpose (because matrix transpose is a Lie algebra anti-isomorphism).
+It thus follows for all~$i < j$ from~$E_{ji} \in \slie$ that also~$E_{ij} \in \slie$.
+
+
+
+
+
+\subsection{}
+
+We construct an inverse~$\psi \colon \sllie_2(\Complex) \to \glie$ to~$\varphi$.
+We define~$\psi$ to be the unique linear map with~$\psi(e) = e_1$,~$\psi(f) = f_1$ and~$\psi(h) = h_1$.
+Recall that~$[h,e] = 2e$,~$[h,f] = -2f$ and~$[e,f] = h$.
+The relations~(23),~(24),~(25) therefore ensure that~$\psi$ is a homomorphism of Lie~algebras.
+Then~$\psi \varphi = \id_{\sllie_2(\Complex)}$ because this holds on the basis~$e$,~$h$,~$f$ of~$\sllie_2(\Complex)$ and~$\varphi \psi = \id_{\glie}$ because this holds on the Lie~algebra generators~$e_1$,~$h_1$,~$f_1$ of~$\glie$.
+
+
+
