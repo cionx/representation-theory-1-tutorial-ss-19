@@ -2,9 +2,12 @@
 \usepackage{microtype}
 
 \usepackage{enumitem}
+\usepackage{xparse}
 
 \usepackage{mathtools, amssymb, amsthm}
 
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
 
 
 
@@ -16,18 +19,28 @@
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
 
+% hyperref colours
+\hypersetup{
+    colorlinks,
+    linkcolor={magenta},
+    citecolor={blue!50!black},
+    urlcolor={blue}
+}
+
 % theorems and such
 \newcounter{everything}
 \theoremstyle{definition}
+\newtheorem{lemma}[everything]{Lemma}
 \newtheorem{remark}[everything]{Remark}
-
+\newtheorem{warning}[everything]{Warning}
 
 
 
 
 %%%%% Text Macros
-
 \newcommand{\dash}[2]{#1\nobreakdash-#2}
+% specific ones
+\newcommand{\representation}[1]{#1\nobreakdash-representations}
 
 
 
@@ -41,17 +54,37 @@
 \newcommand{\gllie}{\mathfrak{gl}}
 \newcommand{\slie}{\mathfrak{s}}
 \newcommand{\sllie}{\mathfrak{sl}}
+\newcommand{\solie}{\mathfrak{so}}
+
+% spaces
+\NewDocumentCommand{\exterior}{O{}m}{\bigwedge^{#1}(#2)}
 
 % binary things
 \newcommand{\defined}{\coloneqq}
 
-% delimiters
+% delimiters and seperators
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\NewDocumentCommand{\suchthat}{so}{
+  \IfValueTF{2}
+  {
+    \,#2|\,
+  }
+  {
+    \IfBooleanTF{#1}
+    {
+      \,\middle|\,
+    }
+    {
+      \mathrel{|}
+    }
+  }
+}
 
 % functions
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
 
 
 
