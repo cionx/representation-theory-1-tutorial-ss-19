@@ -1,1 +1,616 @@
-\addtocounter{section}{1}
+\section{}
+
+All occuring field are of characteristic zero.
+
+
+
+
+
+\addtocounter{subsection}{1}
+
+
+
+
+
+\addtocounter{subsection}{1}
+
+
+
+
+
+\subsection{}
+
+To show that~$I \defined [\glie, \glie]^\perp$ is contained in~$\rad(\glie)$ we show that~$I$ is a solvable ideal in~$\glie$.
+The claimed inclusion then follows because~$\rad(\glie)$ is the unique maximal solvable ideal in~$\glie$.
+
+To see that~$I$ is an ideal in~$\glie$ we observe that~$[\glie, \glie]$ is an ideal in~$\glie$, and that for every ideal~$J$ in~$\glie$ the orthogonal~$J^\perp$ is again an ideal in~$\glie$ because the Killing form~$\kappa_{\glie}$ is associative.%
+\footnote{This was hopefully shown in the lecture for the proof of the equivalence of the characterizations for semisimple Lie~algebras.}
+
+To see that~$I$ is solvable we observe that~$\kappa_{\glie}(x,y) = 0$ for all~$x \in I$ and~$y \in [\glie, \glie]$ by definition of~$I$ and hence especially~$\kappa_{\glie}(x,y) = 0$ for all~$x \in I$ and~$y \in [I,I]$.
+We know that the restriction of~$\kappa_{\glie}$ to~$I$ coincides with the Killing form~$\kappa_I$ because~$I$ is an ideal in~$\glie$.
+We have thus found that~$\kappa_I(x,y) = 0$ for all~$x \in I$ and~$y \in [I,I]$.
+It follows from Cartan’s~criterion (part~2 of this exercise) that the ideal~$I$ is indeed solvable.
+
+To show that~$\rad(\glie)$ is contained in~$[\glie, \glie]^\perp$ we need to show that~$\kappa_{\glie}(\rad(\glie), [\glie, \glie]) = 0$.
+It follows from the associativity of~$\kappa_{\glie}$ that
+\[
+  \kappa_{\glie}(\rad(\glie), [\glie, \glie])
+  =
+  \kappa_{\glie}([\rad(\glie), \glie], \glie)  \,.
+\]
+It follows from the upcoming part~4 (that we will prove independent of this part) that the ideal~$[\rad(\glie), \glie]$ is nilpotent.
+That~$\kappa_{\glie}([\rad(\glie), \glie], \glie) = 0$ hence follows from the following observation:
+
+\begin{lemma}
+  \label{nilpotent is in killing radical}
+  Let~$\glie$ be a finite dimensional Lie~algebra and let~$I$ be a nilpotent ideal in~$\glie$.
+  Then~$\kappa_{\glie}(I, \glie) = 0$, i.e.~$I$ is contained in the radical of~$\kappa$.
+\end{lemma}
+
+\begin{proof}
+  Let~$x \in I$ and~$y \in \glie$.
+  We have for all~$n \geq 0$ that~$\ad(x)(I^n) \subseteq I^{n+1}$ and~$\ad(y)(I^n) \subseteq I^n$ because~$I^n$ is an ideal in~$I$.
+  (We are using the convention~$I^0 = I$.)
+  It hence follows by induction that the image of~$(\ad(x)\ad(y))^{n+1}$ is contained in~$I^n$ for every~$n \geq 0$.
+
+  It therefore follows for~$n$ sufficiently large from~$I^n = 0$ that also~$(\ad(x)\ad(y))^n = 0$ whence~$\ad(x)\ad(y)$ is nilpotent.
+  Therefore~$\kappa_{\glie}(x,y) = \tr(\ad(x)\ad(y)) = 0$.
+\end{proof}
+
+
+
+\subsection{}
+\label{complicated part}
+
+This solution is longer than necessary but hopefully sheds some light on what’s going on.
+We are taking the technical aspects of our approach from \cite[I.{\S}5.3]{bourbaki_lie} and \cite[\S19.5]{tauvel_yu}.
+
+\begin{recall}
+  As a motivation for the upcoming definition of~$\srad(\glie)$ we recall the equivalent characterizations of the Jacobson radical~$\jacob(A)$ of a finite dimensional~{\algebra{$k$}}~$A$:
+  \begin{enumerate}
+    \item
+      The intersection of all maximal left ideal of~$A$.
+%     \item
+%       The intersection of all maximal right ideals of~$A$.
+    \item
+      The unique maximal nilpotent ideal of~$A$.
+    \item
+      The set of all~$x \in A$ that annihilate every simple left~{\module{$A$}}.
+%     \item
+%       The set of all~$x \in A$ that annihilate every simple right~{\module{$A$}}.
+  \end{enumerate}
+  Moreover:
+  \begin{enumerate}[resume]
+    \item
+      The algebra~$A$ is semisimple if and only if~$\jacob(A) = 0$.
+  \end{enumerate}
+\end{recall}
+
+For a finite dimensional Lie~algebra~$\glie$ one can similarly consider four kinds of \enquote{radical}:
+\begin{enumerate}
+  \item
+    The sum of any two solvable ideals of~$\glie$ is again solvable whence~$\glie$ admits a unique maximal solvable ideal.
+    This is the \emph{radical}~$\rad(\glie)$ as introduced in the lecture.
+    The Lie~algebra~$\glie$ is semisimple if and only if~$\rad(\glie) = 0$.
+  \item
+    The \emph{radical of the Killing~form} of~$\glie$.
+    Note that by Cartan’s~criterion,~$\rad(\kappa)$ is solvable.
+    (The restriction of~$\kappa_{\glie}$ to~$\rad(\kappa_{\glie})$ is the Killing~form of~$\rad(\kappa_{\glie})$ because~$\rad(\kappa_{\glie})$ is an ideal in~$\glie$.
+    But this restriction is zero by definition of~$\rad(\kappa_{\glie})$ whence~$\kappa_{\rad(\kappa_{\glie})} = 0$.
+    Now apply Cartan’s criterion to~$\rad(\kappa_{\glie})$.)
+    Thus~$\rad(\kappa_{\glie})$ is contained in~$\rad(\glie)$.
+  \item
+    The sum of any two nilpotent ideals of~$\glie$ is again nilpotent whence~$\glie$ admits a unique maximal nilpotent ideal.
+    (This was not shown in the lecture.
+    We will also not show this here, as we won’t need this.)
+    This is the \emph{nilradical}~$\nil(\glie)$.
+    Note that~$\nil(\glie) \subseteq \rad(\glie)$ because every nilpotent ideal is in particular a solvable ideal.
+    Even better, by \cref{nilpotent is in killing radical} we have~$\nil(\glie) \subseteq \rad(\kappa_{\glie})$.
+  \item
+    The set
+    \[
+      \srad(\glie)
+      \defined
+      \left\{
+        x \in \glie
+      \suchthat*
+        \begin{tabular}{@{}c@{}}
+          $x$ annihilates every finite dimensional \\
+          irreducible~{\representation{$\glie$}}
+        \end{tabular}
+      \right\}
+    \]
+    is called the \emph{nilpotent radical} of~$\glie$.
+    The author doesn’t like this name because it sounds too much like the nilradical, and hence will not use it.%
+    \footnote{The term is taken from~\cite[I.{\S}5, Definition 3]{bourbaki_lie}, the notation~$\srad(\glie)$ is taken from~$\slie$ used there.}
+    Note that~$\srad(\glie)$ is an ideal because
+    \[
+      \srad(\glie)
+      =
+      \bigcap
+      \left\{
+        \ker(\rho)
+      \suchthat*
+        \begin{tabular}{@{}c@{}}
+          $(V,\rho)$ is a finite dimensional \\
+          irreducible~{\representation{$\glie$}}
+        \end{tabular}
+      \right\}  \,.
+    \]
+
+\end{enumerate}
+
+We show in the following that~$\srad(\glie)$ is nilpotent (and hence contained in~$\nil(\glie)$) and that~$\srad = \rad(\glie) \cap [\glie, \glie]$.
+Then altogether
+\[
+  \rad(\glie)
+  \supseteq
+  \rad(\kappa_{\glie})
+  \supseteq
+  \nil(\glie)
+  \supseteq
+  \srad
+  =
+  \rad(\glie) \cap [\glie, \glie] \,.
+\]
+(We refer to \cite{radical_history} for a short comment regarding the history of these radicals.)
+It then follows from~$[\rad(\glie), \glie] \subseteq \rad(\glie) \cap [\glie, \glie] = \srad(\glie)$ that~$[\rad(\glie), \glie]$ is nilpotent, as needed for the exercise.
+
+
+
+
+
+
+\subsubsection*{Showing that~$\srad(\glie)$ is nilpotent}
+
+The nilpotency of~$\srad(\glie)$ follows from an equivalent characterization of~$\srad(\glie)$:
+
+\begin{proposition}
+  \label{characterization of nilpotent radical}
+  For an ideal~$I$ in a Lie~algebra~$\glie$ the following conditions are equivalent:
+  \begin{enumerate}
+    \item
+      \label{annihilates}
+      $I$ annihilates every finite dimensional irreducible~{\representation{$\glie$}}~$V$.
+    \item
+      \label{pointwise nilpotent}
+      $I$ acts nilpotent on every finite dimensional~{\representation{$\glie$}}~$(V,\rho)$ in the sense that~$\rho(x)$ is nilpotent for every~$x \in I$.
+    \item
+      \label{nilpotent}
+      $I$ acts nilpotent on every finite dimensional~{\representation{$\glie$}}~$(V,\rho)$ in the sense that for some~$n \geq 1$,~$\rho(x)^n = 0$ for every~$x \in I$.
+  \end{enumerate}
+  Hence~$\srad(\glie)$ is the unique maximal ideal in~$\glie$ that acts nilpotent on every finite dimensional~{\representation{$\glie$}}.
+\end{proposition}
+
+\begin{lemma}
+  \label{nilpotent on irrep is zero}
+  Let~$V$ be a finite dimensional vector space and let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ such that~$V$ is irreducible as a~{\representation{$\glie$}}.
+  If~$I$ is an ideal in~$\glie$ that consists of nilpotent endomorphisms then~$I = 0$.
+\end{lemma}
+
+\begin{proof}
+  It follows from Engel’s theorem that~$I$ annihilates some nonzero linear subspace~$U$ of~$V$.
+  The subspace~$U$ is a~{\subrepresentation{$\glie$}}:
+  For all~$x \in I$,~$y \in \glie$ and~$u \in U$,
+  \[
+    x.y.u
+    =
+    y.x.u + [x,y].u
+    =
+    0
+  \]
+  because~$x, [x,y] \in I$.
+  It follows that~$U = V$ because~$V$ is irreducible.
+\end{proof}
+
+\begin{proof}[Proof of \cref{characterization of nilpotent radical}]
+  \leavevmode
+  \begin{description}
+    \item[\ref*{nilpotent}~$\implies$~\ref*{pointwise nilpotent}]
+      Okay.
+    \item[\ref*{pointwise nilpotent}~$\implies$~\ref*{annihilates}]
+      We may apply \cref{nilpotent on irrep is zero} to the ideal~$\rho(I)$ of~$\rho(\glie)$ to find~$\rho(I) = 0$.
+    \item[\ref*{annihilates}~$\implies$~\ref*{nilpotent}]
+      There exists by the finite dimensionality of~$V$ a filtration
+      \[
+        0
+        =
+        V_0
+        \subsetneq
+        V_1
+        \subsetneq
+        \dotsb
+        \subsetneq
+        V_n
+        =
+        V
+      \]
+      by~{\subrepresentations{$\glie$}} of maximal length, i.e.\ such that the quotients~$V_i/V_{i-1}$ are irreducible.
+      Then~$I.(V_i/V_{i-1}) = 0$ and thus~$I.V_i \subseteq V_{i-1}$ for every~$i = 1, \dotsc, n$.
+      Whence~$\rho(x)^n = 0$ for every~$x \in I$.
+    \qedhere
+  \end{description}
+\end{proof}
+
+\begin{corollary}
+  \label{srad is nilpotent}
+  For every finite dimensional Lie~algebra~$\glie$ the ideal~$\srad(\glie)$ is nilpotent.
+\end{corollary}
+
+\begin{proof}
+  By applying \cref{characterization of nilpotent radical} to the adjoint action of~$\srad(\glie)$ on~$\glie$ we see that every~$x \in \srad(\glie)$ is~{\nilpotent{$\ad_{\glie}$}} nilpotent and hence~{\nilpotent{$\ad_{\srad(\glie)}$}}.
+  It follows from Engel’s theorem that~$\srad(\glie)$ is nilpotent.
+\end{proof}
+
+
+
+
+
+\subsubsection*{Showing that~$\srad(\glie) \subseteq \rad(\glie) \cap [\glie, \glie]$}
+
+\begin{lemma}
+  \label{seperating points}
+  If~$\glie$ is an abelian Lie~algebra then elements of~$\glie$ can be separated by {\onedimensional} representations, in the sense that there exists for all~$x, y \in \glie$ some {\onedimensional} representation~$(V,\rho)$ of~$\glie$ with~$\rho(x) \neq \rho(y)$.
+\end{lemma}
+
+\begin{proof}
+  A one dimensional representation of~$\glie$ is (up to isomorphism) the same as a Lie~algebra homomorphism~$\glie \to \gllie(k) = k$.
+  Both~$\glie$ and~$k$ are abelian, so every linear map~$\glie \to k$ is already a homomorphism of Lie~algebras.
+  The assertian is therefore equivalent to~$\glie^*$ separating the elements of~$\glie$, which is known from linear algebra.
+\end{proof}
+
+\begin{corollary}
+  \label{abelian have zero srad}
+  If~$\glie$ is an abelian Lie~algebra then~$\srad(\glie) = 0$.
+\end{corollary}
+
+\begin{proof}
+  An element~$x \in \srad(\glie)$ annihilates every finite dimensional irreducible representation of~$\glie$ and thus in particular every {\onedimensional} representation of~$\glie$.
+  This means that~$x$ cannot be seperated from~$0$ by {\onedimensional} representations of~$\glie$.
+  Therefore~$x = 0$ by \cref{seperating points}.
+\end{proof}
+
+\begin{lemma}
+  \label{functoriality of srad}
+  If~$\phi \colon \glie \to \hlie$ is a surjective homomorphism of Lie~algebras then
+  \[
+    \phi(\srad(\glie))
+    \subseteq
+    \srad(\hlie)  \,.
+  \]
+\end{lemma}
+
+\begin{proof}
+  Every finite dimensional irreducible representation~$(V, \rho)$ of~$\hlie$ can be pulled back to a representation~$(V, \rho \circ \phi)$ of~$\glie$.
+  It follows from the surjectivity of~$\glie$ that~$(V, \rho \circ \phi)$ is again irreducible.
+  We find that~$(V, \rho \circ \phi)$ is annihilated by~$\srad(\glie)$, which means that~$\phi(\srad(\glie))$ annihilates~$(V, \rho)$.
+  This shows that~$\phi(\srad(\glie))$ annihilates every finite dimensional irreducible representation of~$\hlie$, so~$\phi(\srad(\glie)) \subseteq \srad(\hlie)$.
+\end{proof}
+
+\begin{corollary}
+  \label{inclusion srad in intersection}
+  If~$\glie$ is a finite dimensional Lie~algebra then~$\srad(\glie) \subseteq \rad(\glie) \cap [\glie, \glie]$.
+\end{corollary}
+
+\begin{proof}
+  That~$\srad(\glie)$ is contained in~$\rad(\glie)$ follows from~$\srad(\glie)$ being nilpotent and hence solvable.
+  If~$\pi \colon \glie \to \glie/[\glie, \glie]$ is the canonical projection then
+  \[
+    \pi(\srad(\glie))
+    \subseteq
+    \srad(\glie/[\glie, \glie])
+    =
+    0
+  \]
+  by \cref{functoriality of srad} and \cref{abelian have zero srad}, and hence~$\srad(\glie) \subseteq \ker \pi = [\glie, \glie]$.
+\end{proof}
+
+
+
+\subsubsection*{Showing~$\rad(\glie) \cap [\glie, \glie] \subseteq \srad(\glie)$}
+
+For this inclusion we will need some preparation.
+We start with a classical observation from linear algebra:
+
+\begin{lemma}
+  \label{trace zero lemma}
+  Let~$\ringchar(k) = 0$.
+  If~$A \in \mat(n, k)$ is a matrix with~$\tr(A^m) = 0$ for all~$m \geq 1$ then~$A$ is nilpotent.
+\end{lemma}
+
+\begin{proof}
+  We may assume that~$k$ is algebraically closed.
+  Let~$\lambda_1, \dotsc, \lambda_r$ be the pairwise different nonzero (!) eigenvalues of~$A$ with corresponding multiplicities~$n_1, \dotsc, n_r$.
+  The matrix~$A$ is triangularizable with diagonal entries~$\lambda_1, \dotsc, \lambda_r, 0$ so we need to show that~$n_1 = \dotsb = n_r = 0$.
+  
+  We have for all~$m \geq 0$ that
+  \[
+    0
+    =
+    \tr(A^m)
+    =
+    n_1 \lambda_1^m + \dotsb + n_r \lambda_r  \,.
+  \]
+  For~$m = 1, \dotsc, r$ we can rearrange these equalities in the matrix form
+  \begin{equation}
+    \label{vandermonde product with vector}
+    \begin{pmatrix}
+      \lambda_1   & \lambda_2   & \cdots  & \lambda_r   \\
+      \lambda_1^2 & \lambda_2^2 & \cdots  & \lambda_r^2 \\
+      \vdots      & \vdots      & \ddots  & \vdots      \\
+      \lambda_1^r & \lambda_2^r & \cdots  & \lambda_r^r
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+      n_1     \\
+      n_2     \\
+      \vdots  \\
+      n_r
+    \end{pmatrix}
+    =
+    0 \,.
+  \end{equation}
+  If we denote the matrix on the left hand side by~$V$ then the determinant
+  \[
+    \det(V)
+    =
+    \lambda_1 \dotsm \lambda_r \prod_{j > i} (\lambda_j - \lambda_i)
+  \]
+  does not vanish.
+  The matrix~$V$ is hence invertible.
+  It follows that the column vector in~\eqref{vandermonde product with vector} is the zero vector, so that~$n_1 = \dotsb = n_r = 0$ (here we use that~$\ringchar(k) = 0$).
+\end{proof}
+
+\begin{lemma}
+  \label{technical lemma}
+  Let~$V$ be a finite dimensional vector space and let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ such that~$V$ is irreducible as a~{\representation{$\glie$}}.
+  If~$I$ is any commutative ideal in~$\glie$ then~$I \cap [\glie, \glie] = 0$.
+\end{lemma}
+
+\begin{proof}
+  Let~$A$ be the (associative and unital)~{\subalgebra{$k$}} of~$\End_k(V)$ generated by~$I$.
+  Note that~$A$ is commutative because~$I$ is abelian.
+  
+  \begin{claim*}
+    If~$J$ is a Lie~ideal in~$\glie$ with~$J \subseteq I$ and~$\tr(xa) = 0$ for all~$x \in J$,~$a \in A$ then~$J = 0$.
+  \end{claim*}
+  
+  \begin{proof}[Proof of the Claim]
+    It follows from~$x \in J \subseteq I \subseteq A$ that~$x^n \in A$ for all~$n \geq 0$ and thus by assumption~$\tr(x^n) = \tr(x \cdot x^{n-1}) = 0$ for all~$n \geq 1$.
+    It follows from \cref{trace zero lemma} that~$x$ is nilpotent and it therefore further follows from \cref{nilpotent on irrep is zero} that~$J = 0$.
+  \end{proof}
+
+  We find that~$\glie$ and~$I$ commute:
+  Letting~$x \in \glie$ and~$y \in I$ we find for all~$a \in A$ that~$ay = ya$ because~$A$ is commutative.
+  As a consequence,
+  \begin{align*}
+    \tr([x,y] a)
+    &=
+    \tr(xya - yxa)
+    \\
+    &=
+    \tr(xya) - \tr(yxa)
+    \\
+    &=
+    \tr(xya) - \tr(xay)
+    \\
+    &=
+    \tr(xya) - \tr(xya)
+    \\
+    &=
+    0 \,.
+  \end{align*}
+  It follows with the claim that~$[\glie, I] = 0$.
+  
+  It follows that~$\glie$ and~$A$ commute:
+  The centralizer of~$\glie$ in~$\End_k(V)$ is an (associative and unital) subalgebra of~$\End_k(V)$ that contains~$I$, and hence also contains~$A$.
+  
+  We see that~$\tr(za) = 0$ for all~$z \in [\glie, \glie]$ and~$a \in A$:
+  We have for all~$x, y \in \glie$ that~$ay = ya$ because~$\glie$ and~$A$ commute, and hence~$\tr([x,y]a) = 0$ by the same calculation as above.
+  
+  It follows for~$J = [\glie, \glie] \cap I$, which is a Lie~ideal in~$\glie$ that is contained in~$I$, that~$\tr(za) = 0$ for all~$z \in J$ and~$a \in A$ and thus~$J = 0$ by the claim.
+  This is what we want to prove.
+\end{proof}
+
+\begin{corollary}
+  \label{inclusion intersection in srad}
+  If~$\glie$ is a Lie~algebra then~$\rad(\glie) \cap [\glie, \glie] \subseteq \srad(\glie)$.
+\end{corollary}
+
+\begin{proof}
+  Let~$(V, \rho)$ be a finite dimensional irreducible representation of~$\glie$.
+  Then~$\rho(\rad(\glie))$ is solvable and hence there exists some minimal~$n \geq 0$ with~$\rho(\rad(\glie))^{(n+1)} = 0$;
+  here we use for every ideal~$I$ the convention~$I^{(0)} = I$, so that~$I^{(m+1)} = [I^{(m)}, I^{(m)}]$ for all~$m \geq 0$.
+  Let~$\glie' \defined \rho(\glie)$ and~$I' \defined \rho(\rad(\glie))^{(n)}$.
+  Then~$I'$ is an ideal in~$\glie'$ that is abelian because
+  \[
+    [I', I']
+    =
+    [\rho(\rad(\glie))^{(n)}, \rho(\rad(\glie))^{(n)}]
+    =
+    \rho(\rad(\glie))^{(n+1)}
+    =
+    0 \,.
+  \]
+  That~$V$ is irreducible as a representation of~$\glie$ means that it is irreducible as a representation of~$\glie'$.
+  We can therefore apply \cref{technical lemma} to find that~$I' \cap [\glie', \glie'] = 0$.
+  Hence
+  \begin{equation}
+    \label{rho of intersection}
+    0
+    =
+    I' \cap [\glie', \glie']
+    =
+    \rho(\rad(\glie))^{(n)} \cap [\rho(\glie), \rho(\glie)]
+    =
+    \rho( \rad(\glie)^{(n)} \cap [\glie, \glie] ) \,.
+  \end{equation}
+  If now~$n \geq 1$ then~$\rad(\glie)^{(n)} \subseteq [\glie, \glie]$ and then~\eqref{rho of intersection} simplifies to~$\rho( \rad(\glie)^{(n)} ) = 0$.
+  But this would contradict the minimality of~$n$, hence~$n = 0$.
+  We hence find
+  \[
+    0
+    =
+    \rho( \rad(\glie) \cap [\glie, \glie] ) \,.
+  \]
+  This shows that~$\rad(\glie) \cap [\glie, \glie]$ annihilates every finite dimensional irreducible representation of~$\glie$, which means that~$\rad(\glie) \cap [\glie, \glie] \subseteq \srad(\glie)$.
+\end{proof}
+
+With this we finally arrive at the desired equality:
+
+\begin{theorem}
+  If~$\glie$ is a finite dimensional Lie~algebra then~$\srad(\glie) = \rad(\glie) \cap [\glie, \glie]$.
+\end{theorem}
+
+\begin{proof}
+  We combine \cref{inclusion srad in intersection} and \cref{inclusion intersection in srad}.
+\end{proof}
+
+
+
+
+
+\subsection*{A Generalization}
+
+The nilpotence of~$[\glie, \rad(\glie)]$ can also be generalized by using Problem~20 from sheet~4, as explained in \cite[I.{\S}5.5]{bourbaki_lie} and \cite[\S19.6]{tauvel_yu}:
+
+\begin{theorem}
+  \label{derivations map radical into nilradical}
+  If~$D$ is a derivation of a finite dimensional Lie~algeba~$\glie$ then
+  \[
+    D(\rad(\glie))
+    \subseteq
+    \nil(\glie) \,.
+  \]
+\end{theorem}
+
+We are now gonna prove this \lcnamecref{derivations map radical into nilradical}.
+We have split up the proof in multiple small steps each of which is interesting on its own.
+
+\begin{definition}
+  An ideal~$I$ is a Lie~algebra~$\glie$ is \emph{characteristic} if~$D(I) \subseteq I$ for every ideal~$I$.
+\end{definition}
+
+\begin{example}
+  The derived ideal~$[\glie, \glie]$ is characteristic because
+  \[
+    D([\glie, \glie])
+    \subseteq
+    [D(\glie), \glie] + [\glie, D(\glie)]
+    \subseteq
+    [\glie, \glie]  \,.
+  \]
+\end{example}
+
+\begin{lemma}
+  \label{transitivity of ideals}
+  If~$I$ is a characteristic ideal in a Lie~algebra~$\glie$ and~$J$ is an ideal in~$I$ then~$J$ is also an ideal in~$\glie$.
+\end{lemma}
+
+\begin{proof}
+  For every~$x \in \glie$ the adjoint action~$\ad(x)$ restricts to a derivation of~$I$, which then leaves~$J$ invariant.
+\end{proof}
+
+\begin{lemma}
+  If~$\glie$ is a finite dimensional Lie~algebra with Killing form~$\kappa$ then every derivation~$D$ of~$\glie$ is skew-selfadjoint with respect to~$\kappa$, i.e. for all~$x, y \in \glie$,
+  \[
+    \kappa(D(x), y) 
+    =
+    -\kappa(x, D(y)) \,.
+  \]
+\end{lemma}
+
+\begin{proof}
+  We find with~$[D, \ad(x)] = \ad(D(x))$%
+  \footnote{This is the formula that show that the inner derivations form an ideal in~$\Der(\glie)$.}
+  that
+  \begin{align*}
+    \kappa(D(x), y)
+    &=
+    \tr(\ad(D(x)) \ad(y))
+    \\
+    &=
+    \tr([D, \ad(x)], \ad(y))
+    \\
+    &=
+    \tr(D \ad(x) \ad(y) - \ad(x) D \ad(y))
+    \\
+    &=
+    \tr(D \ad(x) \ad(y)) - \tr(\ad(x) D \ad(y))
+    \\
+    &=
+    \tr(\ad(x) \ad(y) D) - \tr(\ad(x) D \ad(y))
+    \\
+    &=
+    \tr(\ad(x) [\ad(y), D])
+    \\
+    &=
+    -\tr(\ad(x) [D, \ad(y)])
+    \\
+    &=
+    -\tr(\ad(x) \ad(D(y)))
+    \\
+    &=
+    -\kappa(x, D(y))
+  \end{align*}
+  as claimed.
+\end{proof}
+
+\begin{corollary}
+  If~$I$ is a characteristic ideal in a finite dimensional Lie~algebra~$\glie$ then its orthogonal~$I^\perp$ with respect to the Killing form~$\kappa$ of~$\glie$ is again a characterestic ideal.
+\end{corollary}
+
+\begin{proof}
+  The orthogonal of~$I$ is again an ideal by the associativity of~$\kappa$.
+  If~$D$ is any derivation of~$\glie$ and~$x \in I^\perp$ then for every~$y \in I$ again~$D(y) \in I$ and hence
+  \[
+    \kappa(D(x), y)
+    =
+    -\kappa(x, D(y))
+    =
+    0 \,.
+  \]
+  Thus~$D(I^\perp) \subseteq I^\perp$.
+\end{proof}
+
+\begin{example}
+  \label{radical is characteristic}
+  If~$\glie$ is a finite dimensional Lie~algebra then the radical~$\rad(\glie)$ is the orthogonal of the derived ideal~$[\glie, \glie]$ (by part~3) and hence again a characteristic ideal.
+\end{example}
+
+\begin{corollary}
+  \label{radical of ideal}
+  If~$I$ is an ideal in a finite dimensional Lie~algebra~$\glie$ then
+  \[
+    \rad(I)
+    =
+    \rad(\glie) \cap I  \,.
+  \]
+\end{corollary}
+
+\begin{proof}
+  The intersection~$\rad(\glie) \cap I$ is a solvable ideal in~$I$ and hence contained in~$\rad(I)$.
+  The radical~$\rad(I)$ is a characteristic ideal in~$I$ by \cref{radical is characteristic} and hence an ideal in~$\glie$ by \cref{transitivity of ideals}.
+  It is solvable and hence contained in~$\rad(\glie)$, and thus contained in~$\rad(\glie) \cap I$.
+\end{proof}
+
+
+\begin{proof}[Proof of \cref{derivations map radical into nilradical}]
+  We apply the construction of Problem~20 from sheet~4:
+  We regard the element~$D \in \Der(\glie)$ as a Lie~algebra homomorphism~$\theta \colon k \to \Der(\glie)$ and form the semidirect product~$\glie' \defined \glie \rtimes_\theta k$.
+  Then the derivation~$D$ of~$\glie$ extends to the inner derivation~$\ad_{(0,1)}$ of~$\glie'$.
+  
+  It follows from \cref{radical of ideal} that~$\rad(\glie) = \rad(\glie') \cap \glie$ is contained in~$\rad(\glie')$ because~$\glie$ is an ideal in~$\glie'$.
+  Now~$[\glie', \rad(\glie')]$ is contained in the nilradical~$\nil(\glie')$ as seen in \cref{srad is nilpotent}.
+  Hence
+  \[
+    D( \rad(\glie) )
+    =
+    \ad_{(0,1)}( \rad(\glie) )
+    =
+    [(0,1), \rad(\glie)]
+  \]
+  is contained in~$\nil(\glie')$, and thus also in~$\glie \cap \nil(\glie')$.
+  This intersection is a nilpotent ideal in~$\glie$ and hence contained in~$\nil(\glie)$.
+  Thus~$D(\rad(\glie)) \subseteq \glie \cap \nil(\glie') \subseteq \nil(\glie)$.
+\end{proof}

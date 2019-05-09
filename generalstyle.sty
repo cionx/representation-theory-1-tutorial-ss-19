@@ -3,6 +3,7 @@
 
 \usepackage{enumitem}
 \usepackage{xparse}
+\usepackage{csquotes}
 
 \usepackage{mathtools, amssymb, amsthm}
 
@@ -19,30 +20,52 @@
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
 
+% enumitem settings
+\setlist[enumerate, 1]{leftmargin=*, align=left, label=(\arabic*)}
+\setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont}
+
 % hyperref colours
 \hypersetup{
     colorlinks,
     linkcolor={magenta},
-    citecolor={blue!50!black},
+    citecolor={magenta},
     urlcolor={blue}
 }
 
 % theorems and such
 \newcounter{everything}
+\newcounter{claims}[everything]
+
 \theoremstyle{definition}
+\newtheorem{claim}[claims]{Claim}
+\newtheorem*{claim*}{Claim}
+\newtheorem{corollary}[everything]{Corollary}
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{example}[everything]{Example}
 \newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{recall}[everything]{Recall}
 \newtheorem{remark}[everything]{Remark}
+\newtheorem{theorem}[everything]{Theorem}
 \newtheorem{warning}[everything]{Warning}
 
+\renewcommand{\theclaims}{\arabic{everything}.\arabic{claims}}
 
 
 
 %%%%% Text Macros
 \newcommand{\dash}[2]{#1\nobreakdash-#2}
 % specific ones
+\newcommand{\algebra}[1]{#1\nobreakdash-algebra}
 \newcommand{\fourdimensional}{four-dimensional}
+\newcommand{\module}[1]{#1\nobreakdash-module}
+\newcommand{\nilpotent}[1]{#1\nobreakdash-nilpotent}
+\newcommand{\onedimensional}{one-dimensional}
+\newcommand{\representation}[1]{#1\nobreakdash-representation}
+\newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
+\newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
+\newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentations}
 \newcommand{\sixdimensional}{six-dimensional}
-\newcommand{\representation}[1]{#1\nobreakdash-representations}
 
 
 
@@ -54,12 +77,20 @@
 % Lie algebras
 \newcommand{\glie}{\mathfrak{g}}
 \newcommand{\gllie}{\mathfrak{gl}}
+\newcommand{\hlie}{\mathfrak{h}}
 \newcommand{\slie}{\mathfrak{s}}
 \newcommand{\sllie}{\mathfrak{sl}}
 \newcommand{\solie}{\mathfrak{so}}
 
 % spaces
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
 \NewDocumentCommand{\exterior}{O{}m}{\bigwedge^{#1}(#2)}
+\DeclareMathOperator{\jacob}{J}
+\DeclareMathOperator{\nil}{nil}
+\DeclareMathOperator{\mat}{M}
+\DeclareMathOperator{\srad}{srad}
+\DeclareMathOperator{\rad}{rad}
 
 % binary things
 \newcommand{\defined}{\coloneqq}
@@ -67,7 +98,7 @@
 % delimiters and seperators
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \NewDocumentCommand{\suchthat}{so}{
-  \IfValueTF{2}
+  \IfValueTF{#2}
   {
     \,#2|\,
   }
@@ -86,6 +117,7 @@
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ringchar}{char}
 \DeclareMathOperator{\tr}{tr}
 
 
