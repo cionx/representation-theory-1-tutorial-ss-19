@@ -6,6 +6,8 @@
 \usepackage{csquotes}
 
 \usepackage{mathtools, amssymb, amsthm}
+\usepackage{extarrows}
+\usepackage{tikz-cd}
 
 \usepackage{hyperref}
 \usepackage[capitalise,noabbrev]{cleveref}
@@ -57,11 +59,17 @@
 \newcommand{\dash}[2]{#1\nobreakdash-#2}
 % specific ones
 \newcommand{\algebra}[1]{#1\nobreakdash-algebra}
+\newcommand{\conjugated}[1]{#1\nobreakdash-conjugated}
 \newcommand{\fourdimensional}{four-dimensional}
+\newcommand{\howmanyth}[1]{#1\nobreakdash-th}
+\newcommand{\matrices}[1]{#1\nobreakdash-matrices}
 \newcommand{\module}[1]{#1\nobreakdash-module}
 \newcommand{\nilpotent}[1]{#1\nobreakdash-nilpotent}
 \newcommand{\onedimensional}{one-dimensional}
+\newcommand{\orbit}[1]{#1\nobreakdash-orbit}
 \newcommand{\representation}[1]{#1\nobreakdash-representation}
+\newcommand{\set}[1]{#1\nobreakdash-set}
+\newcommand{\sets}[1]{#1\nobreakdash-sets}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
 \newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
 \newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentations}
@@ -75,6 +83,7 @@
 \newcommand{\Complex}{\mathbb{C}}
 
 % Lie algebras
+\newcommand{\blie}{\mathfrak{b}}
 \newcommand{\glie}{\mathfrak{g}}
 \newcommand{\gllie}{\mathfrak{gl}}
 \newcommand{\hlie}{\mathfrak{h}}
@@ -83,20 +92,28 @@
 \newcommand{\solie}{\mathfrak{so}}
 
 % spaces
+\DeclareMathOperator{\Borel}{B}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
 \NewDocumentCommand{\exterior}{O{}m}{\bigwedge^{#1}(#2)}
+\DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\jacob}{J}
 \DeclareMathOperator{\nil}{nil}
 \DeclareMathOperator{\mat}{M}
+\DeclareMathOperator{\SB}{SB}
+\DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\srad}{srad}
 \DeclareMathOperator{\rad}{rad}
+
+% arrow
+\newcommand{\xlongto}[1]{\xlongrightarrow{\; #1 \;}}
 
 % binary things
 \newcommand{\defined}{\coloneqq}
 
 % delimiters and seperators
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \NewDocumentCommand{\suchthat}{so}{
   \IfValueTF{#2}
   {
@@ -120,6 +137,9 @@
 \DeclareMathOperator{\ringchar}{char}
 \DeclareMathOperator{\tr}{tr}
 
+% other things
+\newcommand{\smallvect}[1]{\begin{psmallmatrix} #1 \end{psmallmatrix}}
+\newcommand{\vect}[1]{\begin{pmatrix} #1 \end{pmatrix}}
 
 
 

@@ -1,4 +1,446 @@
-\addtocounter{section}{1}
+\section{}
+
+In the following~$k$ denotes an algebraically closed field.
+We start by doing all the preparation to effectively solve the exercise:
+
+
+
+
+
+\subsection*{Preparation}
+
+\begin{definition}
+  A \emph{flag} in a vector space~$V$ is an increasing sequence of linear subspaces
+  \[
+    0
+    =
+    F_0
+    \subsetneq
+    F_1
+    \subsetneq
+    \dotsb
+    \subsetneq
+    F_n
+    =
+    V \,.
+  \]
+  This flag is \emph{complete} if it has maximal length, i.e.\ if~$V$ is finite dimensional and~$\dim F_i = i$ for every~$i = 0, \dotsc, n$.
+\end{definition}
+
+\begin{recall}
+  \label{conjugation is a lie algebra iso}
+  If~$A$ is a~{\algebra{$k$}} and~$a \in A^\times$ is a unit then the conjugation map~$x \mapsto a x a^{-1}$ is an algebra automorphism of~$A$ and hence also a Lie~algebra automorphism.
+\end{recall}
+
+\begin{recall}
+  \label{recalling solvability via flags}
+  If~$V$ is a representation of a Lie~algebra~$\hlie$ and~$F = (F_i)_{i=0}^n$ is a flag of~$V$ then~$\hlie$ \emph{stabilizes}~$F$ if~$\hlie.F_i \subseteq F_i$ for every~$i = 0, \dotsc, n$, i.e.\ if~$F$ consists of subrepresentations.
+  
+  If~$V$ is a finite dimensional vector space then the following conditions on a Lie~subalgebra~$\hlie$ of~$\gllie(V)$ are equivalent:
+  \begin{enumerate}
+    \item
+      $\hlie$ is solvable.
+    \item
+      $\hlie$ stabilizes a complete flag of~$V$.
+    \item
+      There exists a basis of~$\hlie$ with respect to which~$\hlie$ is represented by upper triangular matrices.
+  \end{enumerate}
+  For a Lie~subalgebra~$\hlie$ of~$\gllie_n(k)$ the following conditions are equivalent:
+  \begin{enumerate}
+    \item
+      $\hlie$ is solvable.
+    \item
+      $\hlie$ stabilizes a complete flag of~$k^n$.
+    \item
+      There exists some~$g \in \GL_n(k)$ such that~$g \hlie g^{-1}$ consists of upper triangular matrices.
+  \end{enumerate}
+  (That~$k$ is algebraically closed is used to go from the solvability of~$\hlie$ to the other two conditions, which are equivalent over any field, and which conversely imply the solvability of~$\hlie$ over any field.)
+\end{recall}
+
+We denote by~$\Flags$ the set of all complete flags in~$k^n$ and by
+\[
+  S
+  \defined
+  (0, \gen{e_1}, \gen{e_1, e_2}, \dotsc, \gen{e_1, \dotsc, e_n} = k^n)
+\]
+the \emph{standard flag} of~$k^n$.
+
+\begin{recall}
+  \label{recalling group actions}
+  Let~$G$ be a group acting on a set~$X$, i.e.\ let~$X$ be a~{\set{$G$}}.
+  The orbit of an element~$x \in X$ is the set~$G.x = \{g.x \suchthat g \in G\}$.
+  The action of~$G$ on~$X$ is \emph{transitive} if the following equivalent conditions hold:
+  \begin{enumerate}
+    \item
+      There exists for all~$x, y \in X$ some~$g \in G$ with~$g.x = y$.
+    \item
+      There exists some~$x \in X$ such that there exists for every~$y \in X$ some~$g \in G$ with~$g.x = y$.
+    \item
+      The orbit of every~$x \in X$ is all of~$X$.
+    \item
+      There exists some~$x \in X$ whose orbit is all of~$X$.
+  \end{enumerate}
+  The \emph{stabilizer} of a point~$x \in X$ is the subgroup~$G_x = \{g \in G \suchthat g.x = x\}$ of~$G$.
+  The map
+  \[
+    G/G_x
+    \to
+    G.x \,,
+    \quad
+    g G_x
+    \mapsto
+    g.x
+  \]
+  is a well-defined isomorphism of~{\sets{$G$}}, where the action of~$G$ on the set of left cosets~$G/G_x$ is given by~$g.g'G_x = g g' G_x$.
+\end{recall}
+
+\begin{lemma}
+  \label{action on flags}
+  The group~$\GL_n(k)$ acts on the set of complete flags~$\Flags$ via
+  \[
+    g.(F_0, \dotsc, F_n)
+    =
+    (g.F_0, \dotsc, g.F_n)  \,.
+  \]
+  This action is transitive and the stabilizer of the standard flag~$S$ is~$\Borel_n(k)$ (the group of upper triangular~{\matrices{$(n \times n)$}}).
+\end{lemma}
+
+\begin{proof}
+  This is indeed an action of~$\GL_n(k)$ on~$\Flags$.
+  
+  If~$F \in \Flags$ with~$F = (F_0, \dotsc, F_n)$ then let~$x_1, \dotsc, x_n$ be a basis of~$V$ so that~$x_1, \dotsc, x_i$ is a basis of~$F_i$ for every~$i = 0, \dotsc, n$.
+  Then the matrix~$g \in \mat(n, k)$ with columns~$x_1, \dotsc, x_n$ is invertible and~$g.S = F$ because
+  \[
+    g.\gen{e_1, \dotsc, e_i}
+    =
+    \gen{g.e_1, \dotsc, g.e_i}
+    =
+    \gen{x_1, \dotsc, x_i}
+    =
+    F_i
+  \]
+  for every~$i = 0, \dotsc, n$.
+  This shows that the action is transitive.
+  
+  If~$g \in \GL_n(k)$ with~$g.S = S$ then let~$x_1, \dotsc, x_n$ be the columns of~$x$.
+  That~$g.S = S$ means that~$g.F_i \subseteq F_i$ for all~$i = 0, \dotsc, n$, which means that
+  \[
+    \gen{x_1, \dotsc, x_i}
+    \subseteq
+    \gen{e_1, \dotsc, e_i}
+  \]
+  for all~$i = 0, \dotsc, n$.%
+  \footnote{The inclusion~$g.F_i \subseteq F_i$ is by equality of dimensions equivalent to~$g.F_i = F_i$.
+  We choose to work with the condition~$g.F_i \subseteq F_i$ so that we don’t need to worry about equality.}
+  This happens to be the case precisely when for all~$i = 0, \dotsc, n$ the~{\howmanyth{$i$}} column of~$g$ admits no entries after the~{\howmanyth{$i$}} row, i.e.\ if~$g$ is upper triangular.
+  This shows that the stabilizer of the standard flag~$S$ is precisely~$\Borel_n(k)$.
+\end{proof}
+
+We denote by~$\blie$ the Lie~subalgebra of~$\sllie_n(k)$ of traceless upper triangular matrices.
+
+\begin{lemma}
+  \label{borel invariant subspaces}
+  The only~{\subrepresentations{$\blie$}} of~$k^n$ are~$\gen{e_1, \dotsc, e_i}$ for~$i = 0, \dotsc, n$.
+\end{lemma}
+
+\begin{proof}
+  Let~$U$ be a~{\subrepresentation{$\blie$}} and let~$x \in U$ be a vector with entries~$x_1, \dotsc, x_n$.
+  Suppose that~$x_i \neq 0$ but~$x_{i+1} = \dotsb = x_n = 0$.
+  Then~$x/x_i \in U$ and so we may assume~$x_i = 1$.
+  Let~$N \in \blie$ be the matrix
+  \[
+    N
+    \defined
+    \begin{pmatrix}
+      0 & 1 &         &   \\
+        & 0 & \ddots  &   \\
+        &   & \ddots  & 1 \\
+        &   &         & 0
+    \end{pmatrix}
+  \]
+  The vectors
+  \[
+    x
+    =
+    \vect{x_1 \\ \vdots \\ x_{i-2} \\ x_{i-1} \\ 1 \\ 0 \\ \vdots \\ 0} \,,
+    \quad
+    N x
+    =
+    \vect{x_2 \\ \vdots \\ x_{i-1} \\ 1 \\ 0 \\ 0 \\ \vdots \\ 0} \,,
+    \quad
+    \dotsc \,,
+    \quad
+    N^{n-2} x
+    =
+    \vect{x_{i-1} \\ 1 \\ 0 \\ \vdots \\ \vdots \\ \vdots \\ 0}
+    \quad
+    N^{i-1} x
+    =
+    \vect{1 \\ 0 \\ \vdots \\ \vdots \\ \vdots \\ \vdots \\ 0}
+  \]
+  are again contained in~$U$ and they are linearly independent.
+  We also see that
+  \[
+    \gen{x, Nx, N^2 x, \dotsc, N^{i-1} x}
+    =
+    \gen{e_1, e_2, \dotsc, e_i}
+  \]
+  and hence~$\gen{e_1, e_2, \dotsc, e_i} \subseteq U$.
+  Let now~$i$ be maximal such that there exists some~$x \in U$ with~$x_i \neq 0$.
+  Then~$U \subseteq \gen{e_1, \dotsc, e_i}$ by choice of~$i$ but also~$x_{i+1} = \dotsb = x_n = 0$ and hence~$\gen{e_1, \dotsc, e_i} \subseteq U$ by the above observation.
+  Thus~$U = \gen{e_1, \dotsc, e_i}$.
+\end{proof}
+
+\begin{corollary}
+  \label{standard borel fixes only standard flag}
+  The standard flag~$S$ is the only complete flag in~$k^n$ stabilized by~$\blie$.
+\end{corollary}
+
+\begin{proof}
+  The flag~$S$ is stabilized by~$\blie$.
+  On the other hand every stabilized flag consists of~{\subrepresentations{$\blie$}} whence the uniqueness follows from \cref{borel invariant subspaces}.
+\end{proof}
+
+\begin{lemma}
+  \label{fixed flag under conjugation}
+  Let~$\hlie$ be a Lie~subalgebra of~$\gllie_n(k)$ and let~$g \in \GL_n(k)$.
+  Then~$\hlie$ stabilizes a flag~$F$ of~$k^n$ if and only if~$g \hlie g^{-1}$ stabilizes the flag~$g.F$.
+\end{lemma}
+
+\begin{proof}
+  Let~$F = (F_0, \dotsc, F_n)$.
+  Then
+  \begin{align*}
+    {}&
+    \text{$\hlie$ stabilizes~$F$}
+    \\
+    \iff{}&
+    \text{$\hlie.F_i \subseteq F_i$ for all~$i = 0, \dotsc, n$}
+    \\
+    \iff{}&
+    \text{$\hlie g^{-1} . g F_i \subseteq F_i$ for all~$i = 0, \dotsc, n$}
+    \\
+    \iff{}&
+    \text{$g \hlie g^{-1} . g F_i \subseteq g F_i$ for all~$i = 0, \dotsc, n$}
+    \\
+    \iff{}&
+    \text{$g \hlie g^{-1}$ stabilizes~$g.F$} 
+  \end{align*}
+  as claimed
+\end{proof}
+
+\begin{corollary}
+  \label{unique fixed flag of borel}
+  If~$g \in \GL_n(k)$ then~$g.S$ is the only complete flag of~$k^n$ stabilized by~$g \blie g^{-1}$.
+\end{corollary}
+
+\begin{proof}
+  If~$g \blie g^{-1}$ stabilizes a flag~$F$ then we may write~$F = g'.S$ for some~$g' \in \GL_n(k)$ by \cref{action on flags}.
+  Then~$\blie = g^{-1} (g \blie g^{-1}) g$ stabilizes~$g^{-1} g'.S$ by \cref{fixed flag under conjugation}.
+  It follows from \cref{standard borel fixes only standard flag} that~$g^{-1} g'.S = S$.
+  Therefore~$g^{-1} g' \in \Borel_n(k)$ by \cref{action on flags}.
+  We can therefore write the group element~$g'$ as~$g' = g h$ with~$h \in \Borel_n(k)$.
+  Then
+  \[
+    F
+    =
+    g'.S
+    =
+    gh.S
+    =
+    g.h.S
+    =
+    g.S
+  \]
+  because~$h.S = S$, which is the desired uniqueness.
+\end{proof}
+
+
+
+
+
+\subsection*{The Exercise Itself}
+
+The Lie~subalgebra~$\blie$ of~$\sllie_n(k)$ is solvable.
+If~$\blie'$ is any other solvable Lie~subalgebra of~$\sllie_n(k)$ then by \cref{recalling solvability via flags} there exists some~$g \in \GL_n(k)$ such that~$g \blie' g^{-1}$ consists of upper triangular matrices.
+The conjugation action~$g (-) g^{-1}$ gives a Lie~algebra automorphism of~$\sllie_n(k)$ by \cref{conjugation is a lie algebra iso} and because the condition~$\tr(x) = 0$ is invariant under conjugation.
+Thus~$g \blie' g^{-1}$ is a solvable Lie~subalgebra of~$\blie$.
+
+This shows that~$\blie$ is of maximal dimension among all solvable Lie~subalgebras of~$\sllie_n(k)$ and thus a Borel~subalgebra.
+
+If~$\blie'$ is itself a Borel~subalgebra then~$g \blie' g^{-1}$ is again a Borel~subalgebra of~$\sllie_n(k)$.
+It then follows from the solvability of~$\blie$ and maximality of~$g \blie' g^{-1}$ that~$g \blie' g^{-1} = \blie$.
+This shows that all Borel~subalgebras of~$\sllie_n(k)$ are~{\conjugated{$\GL_n(k)$}}.
+
+They are also~{\conjugated{$\SL_n(k)$}}:
+Suppose that~$\blie' = g \blie g^{-1}$ for some~$g \in \GL_n(k)$.
+We may write~$g = hd$ where~$d$ is the invertible diagonal matrix
+\[
+  d
+  =
+  \begin{pmatrix}
+    \det(g) &   &         &   \\
+            & 1 &         &   \\
+            &   & \ddots  &   \\
+            &   &         & 1
+  \end{pmatrix}
+  \,.
+\]
+Then~$\det h = 1$ and
+\[
+  \blie'
+  =
+  g \blie g^{-1}
+  =
+  (hd) \blie (hd)^{-1}
+  =
+  h d \blie d^{-1} h^{-1}
+  =
+  h \blie h^{-1}
+\]
+because~$d \blie d^{-1} = \blie$ (since~$d$ and~$d^{-1}$ are invertible and diagonal).
+This shows that~$\blie'$ and~$\blie$ are~{\conjugated{$\SL_n(k)$}}.%
+\footnote{Geometrically speaking, suppose that~$F = (F_0, \dotsc, F_n)$ is a complete flag in~$k^n$ and~$x_1, \dotsc, x_n$ is a basis of~$k^n$ such that~$x_1, \dotsc, x_i$ is a basis of~$F_i$ for every~$i = 0, \dotsc, n$.
+If~$g \in \GL_n(k)$ is the matrix with columns~$x_1, \dotsc, x_n$ then it may happen that~$\det(g) \neq 1$.
+But we can normalize the first basis vector~$x_1$ by replacing it with~$x_1/\deg(g)$.
+The resulting basis~$y_1, \dotsc, y_n$ of~$k^n$ with~$y_1 = x_1/\det(g)$ and~$y_i = x_i$ for~$i = 2, \dotsc, n$ then again satisfies~$\gen{y_1, \dotsc, y_i} = F_i$ for all~$i = 1, \dotsc, n$, but the resulting matrix~$h$ with columns~$y_1, \dotsc, y_n$ now satisfies~$\det(h) = \deg(g)/\det(g) = 1$.
+We can therefore adjust the determinant of the occuring matrix~$g$ without changing the underlying flag.}
+
+Let~$\Borels$ be the set of all Borel~subalgebras of~$\sllie_n(k)$.
+We now construct a bijection
+\[
+  \Phi
+  \colon
+  \Borels
+  \xlongto{\sim}
+  \Flags \,.
+\]
+The map~$\Phi$ assigns to each Borel~subalgebra~$\blie'$ of~$\sllie_n(k)$ the unique complete flag of~$k^n$ that~$\blie'$ stabilizes.
+
+This gives a well-defined map:
+Every Borel Lie~subalgebra~$\blie'$ of~$\sllie_n(k)$ is of the form~$\blie' = g \blie g^{-1}$ for some~$g \in \SL_n(k)$, hence stabilizes a unique complete flag by \cref{unique fixed flag of borel}, namely~$g.S$ by \cref{fixed flag under conjugation}.
+Hence~$\Phi(g \blie g^{-1}) = g.S$ is well-defined.
+
+The map~$\Phi$ is surjective:
+If~$F$ is any complete flag in~$k^n$ then~$F = g.S$ for some~$g \in \GL_n(k)$ by \cref{action on flags} and then~$g \blie g^{-1}$ is a Borel~subalgebra of~$\sllie_n(k)$ that is mapped to~$F$.
+
+The map~$\Phi$ is also injective:
+Let~$\blie'$ be any Borel~subalgebra of~$\sllie_n(k)$ and let~$F = \Phi(\blie')$ be the complete flag stabilized by~$\blie'$.
+Then
+\[
+  \blie_F
+  =
+  \{
+    x \in \sllie_n(k)
+  \suchthat
+    \text{$x$ stabilizes~$F$}
+  \}
+\]
+is a Lie~subalgebra of~$\sllie_n(k)$, and we find by \cref{recalling solvability via flags} that~$\blie_F$ is solvable.
+The Borel~subalgebra~$\blie'$ is contained in~$\blie_F$ and thus~$\blie' = \blie_F$ by the maximality of~$\blie'$.
+This shows that~$\blie'$ is uniquely determined by~$F$.
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The transitive action of~$\GL_n(k)$ on~$\Flags$ from \cref{action on flags} restricts to an action of~$\SL_n(k)$ on~$\Flags$, which is again transitive:
+      We have seen above that any~$g \in \GL_n(k)$ can be written as~$g = hd$ for some~$h \in \SL_n(k)$ and~$d \in \Borel_n(k)$.
+      Then
+      \[
+        g.S
+        =
+        hd.S 
+        =
+        h.d.S 
+        =
+        h.S
+      \]
+      since~$d.S = S$ (because~$d$ is upper triangular).
+      The~{\orbit{$\SL_n(k)$}} of~$S$ thus coincides with the~{\orbit{$\GL_n(k)$}} of~$S$, which is all of~$\Flags$.
+      The stabilizer of~$S$ in~$\SL_n(k)$ is~$\SB_n(k) \defined \Borel_n(k) \cap \SL_n(k)$.%
+      \footnote{The notation~$\SB_n(k)$ is (probably) non-standard and the author’s fault.}
+      It follows from \cref{recalling group actions} that we get an induced bijection
+      \begin{alignat*}{2}
+        \SL_n(k)/{\SB_n(k)}
+        &\to
+        \Flags  \,,
+        &
+        \quad
+        g \SB_n(k)
+        &\mapsto
+        g.S \,.
+      \intertext{The group~$\SL_n(k)$ acts (transitively) on~$\Borels$ via conjugation and the subgroup~$\SB_n(k)$ stabilizes the standard flag~$\blie$.
+      We therefore get an induced (surjective) map}
+        \SL_n(k)/{\SB_n(k)}
+        &\to
+        \Borels \,,
+        &
+        \quad
+        g \SB_n(k)
+        &\mapsto
+        g \blie g^{-1} \,.
+      \end{alignat*}
+      We get overall the following commutative diagram:
+      \[
+        \begin{tikzcd}[column sep = small, row sep = huge]
+          {}
+          &
+          \SL_n(k)/{\SB_n(k)}
+          \arrow{dl}[above left]{g \mapsto g \blie g^{-1}}
+          \arrow{dr}[above right]{g \mapsto g.S}
+          &
+          {}
+          \\
+          \Borels
+          \arrow{rr}[above]{\Phi}[below]{g \blie g^{-1} \mapsto g.S}
+          &
+          {}
+          &
+          \Flags
+        \end{tikzcd}
+      \]
+      The bottom map and right map are bijections, so the same holds for the left map.
+      We have thus constructed a commutative triangle of one-to-one correspondences.
+    \item
+      Instead of~$\sllie_n(k)$ and~$\SL_n(k)$ we could have used~$\gllie_n(k)$ and~$\GL_n(k)$.
+      We then get another commutative triangle of one-to-one correspondences:
+      \[
+        \begin{tikzcd}[column sep = small, row sep = huge]
+          {}
+          &
+          \GL_n(k)/{\Borel_n(k)}
+          \arrow{dl}[above left]{g \mapsto g \blie g^{-1}}
+          \arrow{dr}[above right]{g \mapsto g.S}
+          &
+          {}
+          \\
+          \left\{
+            \begin{tabular}{@{}c@{}}
+              Borel~subalgebras \\
+              of~$\gllie_n(k)$
+            \end{tabular}
+          \right\}
+          \arrow{rr}[below]{g \blie g^{-1} \mapsto g.S}
+          &
+          {}
+          &
+          \left\{
+            \begin{tabular}{@{}c@{}}
+              complete flags \\
+              in~$k^n$
+            \end{tabular}
+          \right\}
+        \end{tikzcd}
+      \]
+  \end{enumerate}
+  The set~$\Flags$ of complete flags can be regarded as a geometric object, a so called \emph{flag variety}.
+  The above diagrams then give us connections between linear algebra groups, Lie~theory and (algebraic) geometry.
+\end{remark}
+
+
+
+
 
 
 
