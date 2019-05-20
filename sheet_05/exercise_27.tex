@@ -1,1 +1,30 @@
-\addtocounter{section}{1}
+\section{}
+
+Suppose that~$A$ is not a domain.
+There are two possible situation for this to happen:
+
+If~$A = 0$ then~$\gr[i](A) = A_{(i)} / A_{(i-1)} = 0$ for every~$i$ and thus~$\gr(A) = 0$.
+In this case~$\gr(A)$ is again not a domain.
+
+If~$A \neq 0$ then there exist nonzero~$a, b \in A$ with~$ab = 0$.
+Then there exist~$i, j \geq 0$ with~$a \in A_{(i)}$ and~$b \in A_{(j)}$ but~$a \notin A_{(i-1)}$ and~$b \notin A_{(j-1)}$ (where~$A_{(-1)} = 0$).
+(This means that~$a$ is of degree~$i$ and~$b$ is of degree~$j$.)
+Then the resulting elements~$[a]_i \in \gr[i](A)$ and~$[b]_j \in \gr[j](A)$ are nonzero with
+\[
+  [a]_i \cdot [b]_j
+  =
+  [ab]_{i+j}
+  =
+  [0]_{i+j}
+  =
+  0 \,.
+\]
+In this case~$\gr(A)$ is again not a domain.
+
+If~$\glie$ is a Lie~algebra then~$\gr(\Univ(\glie)) = \Symm(\glie)$ is a domain because~$\Symm(\glie)$ is a polynomial algebra.
+(More specifically, if~$(x_i)_{i \in I}$ is a basis of~$\glie$ then~$\Symm(\glie) \cong k[t_i \suchthat i \in I]$.)
+Thus~$\Univ(\glie)$ is a domain.
+
+
+
+
