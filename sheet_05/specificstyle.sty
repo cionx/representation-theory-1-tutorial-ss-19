@@ -1,0 +1,5 @@
+\usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex} % bibliography
+\bibliography{references.bib}
+% no unplaned surprises with \cite
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}

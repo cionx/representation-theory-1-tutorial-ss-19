@@ -1,1 +1,259 @@
-\addtocounter{section}{1}
+\section{}
+
+The main idea of our approach is taken from \cite[6.7]{noncommutative_noetherian}.
+
+Let~$A = \bigcup_{i \geq -1} A_{(i)}$ be a filtered algebra (where~$A_{(-1)} = 0$).
+We denote for~$x \in A_{(i)}$ the corresponding equivalence class in~$\gr[i](A) = A_{(i)} / A_{(i-1)}$ by~$[x]_i$.
+We denote for every~$a \in A$ by~$\deg(a)$ the degree of~$a$, i.e.
+\[
+  \deg(a)
+  =
+  \min
+  \{
+    i \geq 0
+  \suchthat
+    a \in A_{(i)}
+  \} \,.
+\]
+For every element~$a \in A$ the equivalence class~$[a]_i$ is defined for all~$i \geq \deg(a)$, but~$[a]_i = 0$ if~$i > \deg(a)$.
+To every element~$a \in A$ we can hence associate a canonical element~$\gamma(a) \in \gr(A)$, namely~$\gamma(a) = [a]_{\deg(a)}$.
+
+To every left (resp.\ right) ideal~$I$ in~$A$ we can associate a homogeneous left (resp.\ right) ideal~$\gr(I)$ in~$A$, given by the homogeneous parts
+\[
+  \gr[i](I)
+  \defined
+  ( A_{(i-1)} + I \cap A_{(i)} ) / A_{(i-1)}
+  =
+  \{
+    [x]_i
+  \suchthat
+    x \in I \cap A_{(i)}
+  \}
+  \subseteq
+  \gr[i](A)
+\]
+The space~$\gr(I) = \bigoplus_{i \geq 0} \gr[i](I)$ is indeed a left ideal in~$\gr(A)$ because
+\begin{align*}
+  \gr[i](A) \gr[j](I)
+  &=
+  \{
+    [a]_i [x]_j
+  \suchthat{}
+    [a]_i \in \gr[i](A),
+    [x]_j \in \gr[j](I)
+  \}
+  \\
+  &=
+  \{
+    [a]_i [x]_j
+  \suchthat
+    a \in A_{(i)},
+    x \in I \cap A_{(j)}
+  \}
+  \\
+  &=
+  \{
+    [a x]_{i+j}
+  \suchthat
+    a \in A_{(i)},
+    x \in I \cap A_{(j)}
+  \}
+  \\
+  &\subseteq
+  \{
+    [y]_{i+j}
+  \suchthat
+    y \in I \cap A_{i+j}
+  \}
+  \\
+  &=
+  \gr[i+j](I) \,.
+\end{align*}
+If~$I$ is a right ideal then~$\gr(I)$ is again a right ideal.
+
+\begin{recall}
+  If~$M$ is an~{\module{$R$}} (where~$R$ is some ring) and~$A, B, C$ are submodules of~$M$ with~$A \subseteq C$ then
+  \[
+    A + (B \cap C) = (A + B) \cap C \,.
+  \]
+  We can therefore just write~$A + B \cap C$.
+\end{recall}
+
+\begin{remark}
+  The ideal~$I$ inherits from~$A$ a filtration given by~$I_{(i)} \defined I \cap A_{(i)}$.
+  Then
+  \begin{align*}
+    \gr[i](I)
+    &=
+    (A_{(i-1)} + I \cap A_{(i)}) / A_{(i-1)}
+    \\
+    &\cong
+    (I \cap A_{(i)}) / (A_{(i-1)} \cap I \cap A_{(i)})
+    \\
+    &=
+    (I \cap A_{(i)}) / (I \cap A_{(i-1)})
+    \\
+    &=
+    I_{(i)} / I_{(i-1)} \,.
+  \end{align*}
+  This justifies the notation~$\gr[i](I)$.
+\end{remark}
+
+If~$I$ and~$J$ are two ideals in~$A$ with~$I \subseteq J$ then also~$\gr[i](I) \subseteq \gr[i](J)$ for all~$i$ and thus~$\gr(I) \subsetneq \gr(J)$.
+We will see that if~$I$ is strictly contained in~$J$, then~$\gr(I)$ is also strictly contained in~$\gr(J)$.
+This will be a consequence of the following observation, that is interesting in its own right.
+
+\begin{proposition}
+  \label{pulled back generating set}
+  Let~$I$ be a left (resp.\ right) ideal in~$A$ and let~$S$ be a subset of~$I$.
+  If~$\{ [s]_{\deg(s)} \suchthat s \in S\}$ is a generating set for the left (resp.\ right) ideal~$\gr(I)$ then~$S$ is a generating set for~$I$.
+\end{proposition}
+
+\begin{proof}
+  Let~$a \in A$.
+  The associated element~$[a]_{\deg(a)} \in A$ can be written as a linear combination
+  \[
+    [a]_{\deg(a)}
+    =
+    \sum_{s \in S} b_s [s]_{\deg(s)}
+  \]
+  for some~$b_s \in \gr(A)$.
+  By decomposing the coefficients~$b_s$ into homogeneous components we see that we can replace each~$b_s$ by its homogeneous component of degree~$\deg(a) - \deg(s)$.
+  We may hence assume that each~$b_s$ is homogeneous of degree~$\deg(a) - \deg(s)$;
+  in particular~$b_s = 0$ whenever~$\deg(s) > \deg(a)$.
+  For
+  \[
+    S'
+    \defined
+    \{
+      s \in S
+    \suchthat
+      \deg(s) \leq \deg(a)
+    \}
+  \]
+  we thus have
+  \[
+    [a]_{\deg(a)}
+    =
+    \sum_{s \in S'} b_s [s]_{\deg(s)} \,.
+  \]
+  We can write every~$b_s$ as~$b_s = [a_s]_{\deg(a) - \deg(s)}$ for some~$a_s \in A_{\deg(a) - \deg(s)}$ because~$b_s$ is homogeneous of degree~$\deg(a)-\deg(s)$.
+  Then
+  \begin{align*}
+    [a]_{\deg(a)}
+    &=
+    \sum_{s \in S'} b_s [s]_{\deg(s)}
+    \\
+    &=
+    \sum_{s \in S'} [a_s]_{\deg(a) - \deg(s)} [s]_{\deg(s)}
+    \\
+    &=
+    \sum_{s \in S'} [a_s s]_{\deg(a)}
+    \\
+    &=
+    \Biggl[ \sum_{s \in S'} a_s s \Biggr]_{\deg(a)}
+  \end{align*}
+  and hence~$a - \sum_{s \in S'} a_s s \in A_{\deg(a) - 1}$.
+  Now we can proceed inductively to express this difference as a linear combination of~$S$.
+\end{proof}
+
+\begin{remark}
+  One may think for~$a \in A$ about the associated element~$[a]_{\deg(a)} \in \gr(A)$ as the \enquote{leading term} of~$a$, and as~$\gr(I)$ as the \enquote{ideal of leading terms} of~$I$.
+  (Note that if~$A$ is a graded algebra then~$\gr(A) = A$ and~$[a]_{\deg(a)}$ is precisely the leading term of~$a$.)
+  Then the above statement and its proof may be compared to Hilbert’s basis theorem%
+  \footnote{In \cite[Proposition~6.7]{noncommutative_noetherian} the above \lcnamecref{pulled back generating set} is implicitely used, and for a missing calculations the authors refer to an earlier proof --- namely that of Hilbert’s basis theorem.}%
+  , or the concept of a Gröbner~basis.
+\end{remark}
+
+\begin{corollary}
+  \label{strictness is preserved}
+  If~$I$ and~$J$ are left (resp.\ right) ideals in~$A$ with~$I \subsetneq J$ then~$\gr(I) \subsetneq \gr(J)$.
+\end{corollary}
+
+\begin{proof}
+  Suppose that~$\gr(I) = \gr(J)$.
+  The ideal~$\gr(I)$ is homogeneous and thus generated by homogeneous elements.
+  There hence exists some subset~$S$ of~$I$ such that~$\gr(I)$ is generated by the set~$\{ [s]_{\deg(s)} \suchthat s \in S\}$.
+  It follows from \cref{pulled back generating set} and~$\gr(I) = \gr(J)$ that~$S$ is a generating set of both~$I$ and~$J$.
+  Thus~$I = J$.
+\end{proof}
+
+\begin{corollary}
+  \label{associated graded reflects noetherian and artinian}
+  If~$\gr(A)$ is left (resp.\ right) noetherian then~$A$ is left (resp.\ right) noetherian.
+  The same holds for left (resp.\ right) artinian.
+\end{corollary}
+
+\begin{proof}
+  Every strictly increasing sequence of left (resp.\ right) ideals
+  \[
+    I_0
+    \subsetneq
+    I_1
+    \subsetneq
+    I_2
+    \subsetneq
+    I_3
+    \subsetneq
+    \dotsb
+  \]
+  in~$A$ results by \cref{strictness is preserved} in a strictly increasing seqenuece of left (resp.\ right) ideals
+  \[
+    \gr(I_0)
+    \subsetneq
+    \gr(I_1)
+    \subsetneq
+    \gr(I_2)
+    \subsetneq
+    \gr(I_3)
+    \subsetneq
+    \dotsb
+  \]
+  in~$\gr(A)$.
+  So if~$A$ is not noetherian then neither is~$\gr(A)$.
+  Similarly for artinian.
+\end{proof}
+
+\begin{corollary}
+  If~$\glie$ is a finite dimensional Lie~algebra then~$\Univ(\glie)$ is both left and right noetherian.
+\end{corollary}
+
+\begin{proof}
+  If~$\dim \glie = n$ then~$\gr(\Univ(\glie)) = k[x_1, \dotsc, x_n]$ is both left and right noetherian whence the assertion follows from \cref{associated graded reflects noetherian and artinian}.
+\end{proof}
+
+\begin{remark}
+  Recall that for any~$n \geq 1$ the polynomial algebra~$k[x_1, \dotsc, x_n]$ is not artinian because
+  \[
+    (x_n)
+    \supsetneq
+    (x_n^2)
+    \supsetneq
+    (x_n^3)
+    \supsetneq
+    \dotsb
+  \]
+  is a strictly decreasing sequence of ideals of infinite length.
+  We can see similarly that if~$\glie$ is any nonzero Lie~algebra then~$\Univ(\glie)$ is neither left artianian nor right artinian:
+  
+  We show that that~$\Univ(\glie)$ is not left artinian:
+  Let~$(x_i)_{i \in I}$ be basis of~$\glie$ such that the index set~$(I, \leq)$ is linearly ordered and admits a maximal element~$j \in I$.
+  (Here we use the well ordering theorem.)
+  Then~$\Univ(\glie)$ admits the associated PBW basis consisting of all monomials~$x_{i_1}^{n_1} \dotsm x_{i_r}^{n_r}$ with~$r \geq 0$,~$n_i \geq 1$,~$i_1 < \dotsb < i_r$.
+  It follows that for all~$m \geq 0$ the left ideal~$\Univ(\glie) x_j^m$ has as a basis all monomials~$x_{i_1}^{n_1} \dotsm x_{i_r}^{n_r} x_j^{m'}$ with~$r \geq 0$,~$n_i \geq 1$,~$i_1 < \dotsb < i_r < j$ and~$m' \geq m$.
+  Thus
+  \[
+    \Univ(\glie) x_j
+    \supsetneq
+    \Univ(\glie) x_j^2
+    \supsetneq
+    \Univ(\glie) x_j^3
+    \supsetneq
+    \dotsb
+  \]
+  is a strictly increasing sequence of left ideals of infinite length.
+  
+  That~$\Univ(\glie)$ is not right artinian can be seen in the same way.
+\end{remark}
+
+
