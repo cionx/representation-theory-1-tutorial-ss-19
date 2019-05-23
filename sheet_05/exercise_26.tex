@@ -1,1 +1,249 @@
-\addtocounter{section}{1}
+\section{}
+
+In the following we abbreviate \enquote{\representation{$\sllie_2(k)$}} by \enquote{representation}.
+
+\begin{lemma}
+  \label{weight space of tensor product}
+  If~$V$ and~$W$ are two representations then for every~$\kappa \in k$,
+  \[
+    (V \tensor W)_\kappa
+    =
+    \bigoplus_{\lambda + \mu = \kappa}
+    V_\lambda \tensor W_\mu \,.
+  \]
+\end{lemma}
+
+\begin{proof}
+  We have~$V_\lambda \tensor W_\mu \subseteq (V \tensor W)_{\lambda + \mu}$ because
+  \[
+    h.(v \tensor w)
+    =
+    (h.v) \tensor w + v \tensor (h.w)
+    =
+    \lambda v \tensor w + \mu v \tensor w
+    =
+    (\lambda + \mu) v \tensor w
+  \]
+  for every simple tensor~$v \tensor w \in V_\lambda \tensor W_\mu$.
+  We also know from Weyl’s~theorem that
+  \begin{gather*}
+    V \tensor W
+    =
+    \bigoplus_\kappa (V \tensor W)_\kappa
+  \shortintertext{and}
+    V \tensor W
+    =
+    \biggl( \bigoplus_\lambda V_\lambda \biggr)
+    \tensor
+    \biggl( \bigoplus_\mu W_\mu \biggr)
+    =
+    \bigoplus_{\lambda, \mu} V_\lambda \tensor W_\mu
+    =
+    \bigoplus_\kappa
+    \bigoplus_{\lambda + \mu = \kappa} V_\lambda \tensor W_\mu \,.
+  \end{gather*}
+  We see that the inclusion~$\bigoplus_{\lambda + \mu = \kappa} V_\lambda \tensor W_\mu \subseteq (V \tensor W)_\kappa$ is already an equality.
+\end{proof}
+
+For every finite dimensional representation~$V$ we denote its formal character by
+\[
+  \ch(V)
+  \defined
+  \sum_{n \in \Integer} \dim(V_n) t^n
+  \in
+  k[t, t^{-1}] \,.
+\]
+
+\begin{lemma}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For every~$n \geq 0$,
+      \[
+        \ch(\irr(n))
+        =
+        t^n + t^{n-2} + \dotsb + t^{2-n} + t^{-n} \,.
+      \]
+    \item
+      If~$V^{(1)}, \dotsc, V^{(n)}$ are finite dimensional representations then
+      \[
+        \ch\bigl( V^{(1)} \oplus \dotsb \oplus V^{(n)} \bigr)
+        =
+        \ch\bigl( V^{(1)} \bigr) + \dotsb + \ch\bigl( V^{(n)} \bigr) \,.
+      \]
+    \item
+      If~$V$ and~$W$ are two finite dimensional representations then
+      \[
+        \ch(V \tensor W)
+        =
+        \ch(V) \ch(W) \,.
+      \]
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We see this from the explicit description of~$\irr(n)$ as done in the lecture.
+    \item
+      This follows from~$( V^{(1)} \oplus \dotsb \oplus V^{(n)} )_\lambda = V^{(1)}_\lambda \oplus \dotsb \oplus V^{(n)}_\lambda$.
+    \item
+      This follows from \cref{weight space of tensor product}.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+  Two finite dimensional representations~$V$ and~$W$ are isomorphic if and only if they have the same formal character.
+\end{proposition}
+
+\begin{proof}
+  If~$V \cong W$ then~$\dim(V_\lambda) = \dim(W_\lambda)$ for every~$\lambda$, and hence~$\ch(V) = \ch(W)$.
+  
+  Suppose now that~$\ch(V) = \ch(W)$.
+  By Weyl’s~theorem we can decompose both~$V$ and~$W$ into irreducibles:
+  \[
+    V
+    \cong
+    \bigoplus_{n=0}^{N} \irr(n)^{\oplus p_n}
+    \quad
+    \text{and}\quad
+    W
+    \cong
+    \bigoplus_{m \geq 0}^{M} \irr(m)^{\oplus q_m}
+  \]
+  with~$p_{N}, q_{M} \neq 0$.
+  Then~$\ch(V)$ has the leading term~$p_N t^N$ and~$\ch(W)$ has the leading term~$q_M t^M$.
+  It follows from~$\ch(V) = \ch(W)$ that~$N = M$ and~$p_N = q_M$.
+  It follows for
+  \[
+    V'
+    \defined
+    \bigoplus_{n=0}^{N-1} \irr(n)^{\oplus p_n}
+    \quad
+    \text{and}\quad
+    W'
+    \defined
+    \bigoplus_{m \geq 0}^{M-1} \irr(m)^{\oplus q_m}
+  \]
+  that
+  \[
+    \ch(V')
+    =
+    \ch(V) - \ch\bigl( \irr(N)^{\oplus N} \bigr)
+    =
+    \ch(W) - \ch\bigl( \irr(M)^{\oplus M} \bigr)
+    =
+    \ch(W')
+  \]
+  We can now apply induction to find~$V' \cong W'$ and hence~$p_i = q_i$ for all~$i = 0, \dotsc, N-1$.
+  The induction start is given by~$\ch(V) = \ch(W) = 0$, when~$V = 0 = W$.
+  
+  This shows that~$N = M$ and~$p_i = q_i$ for all~$i = 1, \dotsc, N$, whence~$V \cong W$.
+\end{proof}
+
+Let now~$n, m \geq 0$.
+To determine the decomposition of~$\irr(n) \tensor \irr(m)$ into irreducibles we may assume that~$n \geq m$ (because~$\irr(n) \tensor \irr(m) \cong \irr(m) \tensor \irr(n)$).
+We can now proceed in two ways:
+\begin{itemize}
+  \item
+    We have
+    \begin{align*}
+      {}&
+      \ch(\irr(n) \tensor \irr(m))
+      \\
+      ={}&
+      \ch(\irr(n)) \ch(\irr(m))
+      \\
+      ={}&
+      (t^n + t^{n-2} + \dotsb + t^{2-n} + t^{-n})
+      (t^m + t^{m-2} + \dotsb + t^{2-m} + t^{-m})
+      \\
+      ={}&
+          t^{n+m}
+      + 2 t^{n+m-2}
+      + \dotsb
+      + m t^{n-m}
+      + \dotsb
+      + m t^{m-n}
+      + \dotsb
+      + 2 t^{2-n-m}
+      + t^{-n-m} \,.
+      \\
+      ={}&
+      (t^{n+m} + t^{n+m-2} + \dotsb + t^{2-n-m} + t^{-n-m})
+      \\
+      {}&
+      + (t^{n+m-2} + t^{n+m-4} + \dotsb + t^{4-n-m} + t^{2-n-m})
+      \\
+      {}&
+      + \dotsb
+      \\
+      {}&
+      + (t^{n-m} + \dotsb + t^{m-n})
+      \\
+      ={}&
+      \ch(\irr(n+m)) + \ch(\irr(n+m-2)) + \dotsb + \ch(\irr(n-m))
+      \\
+      ={}&
+      \ch\bigl( \irr(n+m) \oplus \irr(n+m-2) \oplus \dotsb \oplus \irr(n-m) \bigr)
+    \end{align*}
+    and therefore
+    \[
+      \irr(n) \tensor \irr(m)
+      \cong
+      \irr(n+m) \oplus \irr(n+m-2) \oplus \dotsb \oplus \irr(n-m) \,.
+    \]
+  \item
+    We note that
+    \[
+      \ch(\irr(n))
+      =
+      t^n + t^{n-2} + \dotsb + t^{2-n} + t^{-n}
+      =
+      \frac{t^{n+2} - t^{-n}}{t^2 - 1} \,.
+    \]
+    It follows that
+    \begin{align*}
+      {}&
+      \ch(\irr(n) \tensor \irr(m))
+      \\
+      ={}&
+      \ch(\irr(n)) \ch(\irr(m))
+      \\
+      ={}&
+      \frac{t^{n+2} - t^{-n}}{t^2 - 1} (t^m + t^{m-2} + \dotsb + t^{2-m} + t^{-m})
+      \\
+      ={}&
+      \frac{(t^{n+2} - t^{-n})(t^m + t^{m-2} + \dotsb + t^{2-m} + t^{-m})}{t^2 - 1}
+      \\
+      ={}&
+      \frac{ t^{n+m+2} + t^{n+m} + \dotsb + t^{n-m+2} - t^{m-n} - \dotsb - t^{-n-m+2} - t^{-n-m} }{t^2 - 1}
+      \\
+      ={}&
+        \frac{t^{n+m+2} - t^{-n-m}}{t^2 - 1}
+      + \frac{t^{n+m} - t^{-n-m+2}}{t^2 - 1}
+      + \dotsb
+      + \frac{t^{n-m+2} - t^{m-n}}{t^2 - 1}
+      \\
+      ={}&
+      \ch(\irr(n+m)) + \ch(\irr(n+m-2)) + \dotsb + \ch(n-m)
+      \\
+      ={}&
+      \ch\bigl( \irr(n+m) \oplus \irr(n+m-2) \oplus \dotsb \oplus \irr(n-m) \bigr)
+    \end{align*}
+    and hence again
+    \[
+      \irr(n) \tensor \irr(m)
+      \cong
+      \irr(n+m) \oplus \irr(n+m-2) \oplus \dotsb \oplus \irr(n-m) \,.
+    \]
+\end{itemize}
+
+The above decomposition of~$\irr(n) \tensor \irr(m)$ is known as the \emph{Clebsch--Gordan rule}.
+Under the name of \emph{Glebsch--Gordan coefficients} this plays a role in Quantum mechanics.
+
+
+
+
