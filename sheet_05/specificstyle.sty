@@ -4,4 +4,32 @@
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
 
+\usepackage{listings}
+\lstnewenvironment{pythoncode}{
+  \lstset{
+    numbers           = left,
+    stepnumber        = 1,
+    numbersep         = 5pt,
+    language          = Python,
+    basicstyle        = \footnotesize\listingsfont,
+    showstringspaces  = false,
+    frame             = single,
+    breaklines        = true
+  }
+}{}
+\lstnewenvironment{consoleoutput}{
+  \lstset{
+    basicstyle        = \footnotesize\listingsfont,
+    showstringspaces  = false,
+    frame             = single,
+    breaklines        = true
+  }
+}{}
+
+\usepackage{sagetex}
+
+\usepackage{fontspec}
+\newfontfamily\listingsfont{DejaVu Sans Mono}
+\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+
 \DeclareMathOperator{\irr}{V}

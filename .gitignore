@@ -5,4 +5,8 @@
 *.log
 *.out
 *.run.xml
+*.sage
+*.sage.py
+*.scmd
+*.sout
 *.synctex.gz
