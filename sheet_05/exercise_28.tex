@@ -2,7 +2,7 @@
 
 The main idea of our approach is taken from \cite[6.7]{noncommutative_noetherian}.
 
-Let~$A = \bigcup_{i \geq -1} A_{(i)}$ be a filtered algebra (where~$A_{(-1)} = 0$).
+Let~$A = \bigcup_i A_{(i)}$ be a filtered algebra (where~$A_{(-j)} = 0$ for all~$j \leq -1$).
 We denote for~$x \in A_{(i)}$ the corresponding equivalence class in~$\gr[i](A) = A_{(i)} / A_{(i-1)}$ by~$[x]_i$.
 We denote for every~$a \in A$ by~$\deg(a)$ the degree of~$a$, i.e.
 \[
@@ -16,7 +16,7 @@ We denote for every~$a \in A$ by~$\deg(a)$ the degree of~$a$, i.e.
   \} \,.
 \]
 For every element~$a \in A$ the equivalence class~$[a]_i$ is defined for all~$i \geq \deg(a)$, but~$[a]_i = 0$ if~$i > \deg(a)$.
-To every element~$a \in A$ we can hence associate a canonical element~$\gamma(a) \in \gr(A)$, namely~$\gamma(a) = [a]_{\deg(a)}$.
+To every element~$a \in A$ we can hence associate a canonical element~$\gamma(a) \in \gr(A)$, namely~$[a]_{\deg(a)}$.
 
 To every left (resp.\ right) ideal~$I$ in~$A$ we can associate a homogeneous left (resp.\ right) ideal~$\gr(I)$ in~$A$, given by the homogeneous parts
 \[
@@ -32,7 +32,7 @@ To every left (resp.\ right) ideal~$I$ in~$A$ we can associate a homogeneous lef
   \subseteq
   \gr[i](A)
 \]
-The space~$\gr(I) = \bigoplus_{i \geq 0} \gr[i](I)$ is indeed a left ideal in~$\gr(A)$ because
+If~$I$ is a left ideal then~$\gr(I) = \bigoplus_{i \geq 0} \gr[i](I)$ is a left ideal in~$\gr(A)$ because
 \begin{align*}
   \gr[i](A) \gr[j](I)
   &=
@@ -63,13 +63,13 @@ The space~$\gr(I) = \bigoplus_{i \geq 0} \gr[i](I)$ is indeed a left ideal in~$\
   \{
     [y]_{i+j}
   \suchthat
-    y \in I \cap A_{i+j}
+    y \in I \cap A_{(i+j)}
   \}
   \\
   &=
   \gr[i+j](I) \,.
 \end{align*}
-If~$I$ is a right ideal then~$\gr(I)$ is again a right ideal.
+If~$I$ is a right ideal then a similar calculation shows that~$\gr(I)$ is indeed a right ideal in~$\gr(A)$.
 
 \begin{recall}
   If~$M$ is an~{\module{$R$}} (where~$R$ is some ring) and~$A, B, C$ are submodules of~$M$ with~$A \subseteq C$ then
@@ -81,7 +81,7 @@ If~$I$ is a right ideal then~$\gr(I)$ is again a right ideal.
 
 \begin{remark}
   The ideal~$I$ inherits from~$A$ a filtration given by~$I_{(i)} \defined I \cap A_{(i)}$.
-  Then
+  Then by the second isomorphism theorem
   \begin{align*}
     \gr[i](I)
     &=
@@ -99,71 +99,62 @@ If~$I$ is a right ideal then~$\gr(I)$ is again a right ideal.
   This justifies the notation~$\gr[i](I)$.
 \end{remark}
 
-If~$I$ and~$J$ are two ideals in~$A$ with~$I \subseteq J$ then also~$\gr[i](I) \subseteq \gr[i](J)$ for all~$i$ and thus~$\gr(I) \subsetneq \gr(J)$.
-We will see that if~$I$ is strictly contained in~$J$, then~$\gr(I)$ is also strictly contained in~$\gr(J)$.
+If~$I$ and~$J$ are two ideals in~$A$ with~$I \subseteq J$ then also~$\gr[i](I) \subseteq \gr[i](J)$ for all~$i$ and thus~$\gr(I) \subseteq \gr(J)$.
+We will see that if~$I$ is strictly contained in~$J$ then~$\gr(I)$ is also strictly contained in~$\gr(J)$.
 This will be a consequence of the following observation, that is interesting in its own right.
 
 \begin{proposition}
   \label{pulled back generating set}
   Let~$I$ be a left (resp.\ right) ideal in~$A$ and let~$S$ be a subset of~$I$.
-  If~$\{ [s]_{\deg(s)} \suchthat s \in S\}$ is a generating set for the left (resp.\ right) ideal~$\gr(I)$ then~$S$ is a generating set for~$I$.
+  If the associated elements~$[s]_{\deg(s)}$ with~$s \in S$ is a generating set for the left (resp.\ right) ideal~$\gr(I)$ then~$S$ is a generating set for~$I$.
 \end{proposition}
 
 \begin{proof}
-  Let~$a \in A$.
-  The associated element~$[a]_{\deg(a)} \in A$ can be written as a linear combination
+  We consider only the case that~$I$ is a left ideal;
+  the case of a right ideal works the same.
+  
+  Let~$x \in I$.
+  The associated element~$[x]_{\deg(x)} \in \gr(I)$ can be written as a linear combination
   \[
-    [a]_{\deg(a)}
+    [x]_{\deg(x)}
     =
     \sum_{s \in S} b_s [s]_{\deg(s)}
   \]
   for some~$b_s \in \gr(A)$.
-  By decomposing the coefficients~$b_s$ into homogeneous components we see that we can replace each~$b_s$ by its homogeneous component of degree~$\deg(a) - \deg(s)$.
-  We may hence assume that each~$b_s$ is homogeneous of degree~$\deg(a) - \deg(s)$;
-  in particular~$b_s = 0$ whenever~$\deg(s) > \deg(a)$.
-  For
-  \[
-    S'
-    \defined
-    \{
-      s \in S
-    \suchthat
-      \deg(s) \leq \deg(a)
-    \}
-  \]
-  we thus have
-  \[
-    [a]_{\deg(a)}
-    =
-    \sum_{s \in S'} b_s [s]_{\deg(s)} \,.
-  \]
-  We can write every~$b_s$ as~$b_s = [a_s]_{\deg(a) - \deg(s)}$ for some~$a_s \in A_{\deg(a) - \deg(s)}$ because~$b_s$ is homogeneous of degree~$\deg(a)-\deg(s)$.
+  By decomposing the coefficients~$b_s$ into homogeneous components we see that we can replace each~$b_s$ by its homogeneous component of degree~$\deg(x) - \deg(s)$.
+  We may hence assume that each~$b_s$ is homogeneous of degree~$\deg(x) - \deg(s)$.
+  We can now write every coefficient~$b_s$ as~$b_s = [a_s]_{\deg(x) - \deg(s)}$ for some~$a_s \in A_{\deg(x) - \deg(s)}$.%
+  \footnote{If~$\deg(s) > \deg(x)$ then~$b_s = 0$ and~$a_s = 0$.}
   Then
   \begin{align*}
-    [a]_{\deg(a)}
+    [x]_{\deg(x)}
     &=
-    \sum_{s \in S'} b_s [s]_{\deg(s)}
+    \sum_{s \in S} b_s [s]_{\deg(s)}
     \\
     &=
-    \sum_{s \in S'} [a_s]_{\deg(a) - \deg(s)} [s]_{\deg(s)}
+    \sum_{s \in S} [a_s]_{\deg(x) - \deg(s)} [s]_{\deg(s)}
     \\
     &=
-    \sum_{s \in S'} [a_s s]_{\deg(a)}
+    \sum_{s \in S} [a_s s]_{\deg(x)}
     \\
     &=
-    \Biggl[ \sum_{s \in S'} a_s s \Biggr]_{\deg(a)}
+    \Biggl[ \sum_{s \in S} a_s s \Biggr]_{\deg(x)}
   \end{align*}
-  and hence~$a - \sum_{s \in S'} a_s s \in A_{\deg(a) - 1}$.
+  and hence~$x - \sum_{s \in S'} a_s s \in A_{\deg(x) - 1}$.
   Now we can proceed inductively to express this difference as a linear combination of~$S$.
 \end{proof}
 
 \begin{remark}
-  One may think for~$a \in A$ about the associated element~$[a]_{\deg(a)} \in \gr(A)$ as the \enquote{leading term} of~$a$, and as~$\gr(I)$ as the \enquote{ideal of leading terms} of~$I$.
-  (Note that if~$A$ is a graded algebra then~$\gr(A) = A$ and~$[a]_{\deg(a)}$ is precisely the leading term of~$a$.)
+  One may think for~$a \in A$ about the associated element~$[a]_{\deg(a)} \in \gr(A)$ as the \enquote{leading term} of~$a$, and for an ideal~$I$ in~$A$ about~$\gr(I)$ as the \enquote{ideal of leading terms} of~$I$.
+  (Note that if~$A$ is a graded algebra then~$\gr(A) = A$ and~$[a]_{\deg(a)}$ is precisely the leading term of~$a$ in the usual sense.
+  Then also~$\gr(I) = I$ for every homogeneous left (resp.\ right) ideal~$I$ in~$A$.)
   Then the above statement and its proof may be compared to Hilbert’s basis theorem%
-  \footnote{In \cite[Proposition~6.7]{noncommutative_noetherian} the above \lcnamecref{pulled back generating set} is implicitely used, and for a missing calculations the authors refer to an earlier proof --- namely that of Hilbert’s basis theorem.}%
+  \footnote{In \cite[Proposition~6.7]{noncommutative_noetherian} the above \lcnamecref{pulled back generating set} is implicitely used but not explicitely stated.
+  For the missing calculations the authors instead refer to an earlier proof --- namely that of Hilbert’s basis theorem.}%
   , or the concept of a Gröbner~basis.
 \end{remark}
+
+% TODO: Is I uniquely determined by gr(I)?
 
 \begin{corollary}
   \label{strictness is preserved}
@@ -173,7 +164,8 @@ This will be a consequence of the following observation, that is interesting in 
 \begin{proof}
   Suppose that~$\gr(I) = \gr(J)$.
   The ideal~$\gr(I)$ is homogeneous and thus generated by homogeneous elements.
-  There hence exists some subset~$S$ of~$I$ such that~$\gr(I)$ is generated by the set~$\{ [s]_{\deg(s)} \suchthat s \in S\}$.
+  There hence exists some subset~$S$ of~$I$ such that~$\gr(I)$ is generated by the associated elements~$[s]_{\deg(s)}$ with~$s \in S$.
+  (Here we use that the homogeneous elements contained in~$\gr(I)$ are precisely those of the form~$[x]_{\deg(x)}$ with~$x \in I$.)
   It follows from \cref{pulled back generating set} and~$\gr(I) = \gr(J)$ that~$S$ is a generating set of both~$I$ and~$J$.
   Thus~$I = J$.
 \end{proof}
@@ -197,7 +189,7 @@ This will be a consequence of the following observation, that is interesting in 
     \subsetneq
     \dotsb
   \]
-  in~$A$ results by \cref{strictness is preserved} in a strictly increasing seqenuece of left (resp.\ right) ideals
+  in~$A$ results by \cref{strictness is preserved} in a strictly increasing sequence of left (resp.\ right) ideals
   \[
     \gr(I_0)
     \subsetneq
@@ -219,7 +211,7 @@ This will be a consequence of the following observation, that is interesting in 
 \end{corollary}
 
 \begin{proof}
-  If~$\dim \glie = n$ then~$\gr(\Univ(\glie)) = k[x_1, \dotsc, x_n]$ is both left and right noetherian whence the assertion follows from \cref{associated graded reflects noetherian and artinian}.
+  If~$\glie$ is of dimension~$n$ then~$\gr(\Univ(\glie)) \cong k[x_1, \dotsc, x_n]$ is both left noetherian and right noetherian whence the assertion follows from \cref{associated graded reflects noetherian and artinian}.
 \end{proof}
 
 \begin{remark}
@@ -234,7 +226,7 @@ This will be a consequence of the following observation, that is interesting in 
     \dotsb
   \]
   is a strictly decreasing sequence of ideals of infinite length.
-  We can see similarly that if~$\glie$ is any nonzero Lie~algebra then~$\Univ(\glie)$ is neither left artianian nor right artinian:
+  We can see similarly that if~$\glie$ is any nonzero Lie~algebra then~$\Univ(\glie)$ is neither left artinian nor right artinian:
   
   We show that that~$\Univ(\glie)$ is not left artinian:
   Let~$(x_i)_{i \in I}$ be basis of~$\glie$ such that the index set~$(I, \leq)$ is linearly ordered and admits a maximal element~$j \in I$.
@@ -251,7 +243,7 @@ This will be a consequence of the following observation, that is interesting in 
     \supsetneq
     \dotsb
   \]
-  is a strictly increasing sequence of left ideals of infinite length.
+  is a strictly increasing sequence of left ideals of infinite length, showing that~$\Univ(\glie)$ is not left artinian.
   
   That~$\Univ(\glie)$ is not right artinian can be seen in the same way.
 \end{remark}
